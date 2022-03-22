@@ -78,10 +78,12 @@ class TopappbarWidget extends StatelessWidget {
                                 borderRadius:
                                     BorderRadius.all(Radius.elliptical(48, 48)),
                               ))),
-                      Positioned(
-                          top: 12,
-                          left: 12,
-                          child: SizedBox(width: 0, height: 0)),
+                      Center(
+                        child: Icon(
+                          Icons.clear_all,
+                          //color: ui.Color.fromRGBO(80, 87, 254, 1),
+                        ),
+                      ),
                     ])),
                 SizedBox(width: 255),
                 Container(
@@ -103,10 +105,12 @@ class TopappbarWidget extends StatelessWidget {
                                 borderRadius:
                                     BorderRadius.all(Radius.elliptical(48, 48)),
                               ))),
-                      Positioned(
-                          top: 12,
-                          left: 12,
-                          child: SizedBox(width: 0, height: 0)),
+                      Center(
+                        child: Icon(
+                          Icons.history,
+                          //color: ui.Color.fromRGBO(80, 87, 254, 1),
+                        ),
+                      ),
                     ])),
               ],
             ),
