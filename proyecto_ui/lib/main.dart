@@ -77,6 +77,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Color.fromRGBO(80, 87, 254, 1),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -90,7 +92,10 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(Icons.article),
             label: 'Blog',
           ),
-          
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Perfil',
+          ),
         ],
       ),
     );
