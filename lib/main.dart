@@ -3,6 +3,7 @@ import 'package:proyecto_ui/screens/home.dart';
 import 'package:proyecto_ui/screens/home_teacher.dart';
 import 'package:proyecto_ui/screens/mis_cursos.dart';
 import 'package:proyecto_ui/screens/profile.dart';
+import 'package:proyecto_ui/screens/play.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,7 +45,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
           //Expanded(child: ProfileWidget())
           //Expanded(child: MisCursosWidget())
           //Expanded(child: HomeWidget())
-          Expanded(child: HomeTeacherWidget())
+          Expanded(child: AnalysisBoard())
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

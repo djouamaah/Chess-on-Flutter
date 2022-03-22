@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:ui' as ui;
@@ -17,31 +15,27 @@ class _AnalysisBoardState extends State<AnalysisBoard> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Chess Analysis Board'),
-        ),
-        body: Container(
-            color: ui.Color.fromRGBO(235, 238, 255, 1.0),
-            child: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: TopappbarWidget(),
-                  ),
-                  Expanded(
-                      flex: 8,
-                      child: ChessBoard(
-                        controller: controller,
-                        boardColor: BoardColor.green,
-                        boardOrientation: PlayerColor.white,
-                      )),
-                  Expanded(flex: 4, child: AnswersWidget())
-                ],
+    return Container(
+        color: ui.Color.fromRGBO(235, 238, 255, 1.0),
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                flex: 2,
+                child: TopappbarWidget(),
               ),
-            )));
+              Expanded(
+                  flex: 8,
+                  child: ChessBoard(
+                    controller: controller,
+                    boardColor: BoardColor.green,
+                    boardOrientation: PlayerColor.white,
+                  )),
+              Expanded(flex: 4, child: AnswersWidget())
+            ],
+          ),
+        ));
   }
 }
 
@@ -53,7 +47,7 @@ class TopappbarWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: ui.Color.fromRGBO(235, 238, 255, 1.0),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -89,7 +83,7 @@ class TopappbarWidget extends StatelessWidget {
                           left: 12,
                           child: SizedBox(width: 0, height: 0)),
                     ])),
-                SizedBox(width: 290),
+                SizedBox(width: 255),
                 Container(
                     width: 48,
                     height: 48,
@@ -175,7 +169,7 @@ class _AnswersWidgetState extends State<AnswersWidget> {
                           height: 1.6923076923076923),
                     )),
               ])),
-          SizedBox(height: 10),
+          SizedBox(height: 8),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
