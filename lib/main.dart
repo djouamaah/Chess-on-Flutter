@@ -6,6 +6,7 @@ import 'package:proyecto_ui/screens/home_teacher.dart';
 import 'package:proyecto_ui/screens/mis_cursos.dart';
 import 'package:proyecto_ui/screens/profile.dart';
 import 'package:proyecto_ui/screens/play.dart';
+import 'package:proyecto_ui/screens/blog.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,9 +46,9 @@ class _MyHomePageState extends State<MyHomePage> {
   static const _colorNeutral = Color(0xFFECF1F7);
   int _currentIndex = 0;
   final List _children = [
-    HomeWidget(),
-    AnalysisBoard(),
     HomeTeacherWidget(),
+    AnalysisBoard(),
+    BlogWidget(),
     ProfileWidget()
   ];
 
