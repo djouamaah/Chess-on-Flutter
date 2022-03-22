@@ -76,6 +76,23 @@ class _MyHomePageState extends State<MyHomePage> {
           Expanded(child: HomeTeacherWidget())
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Inicio',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.play_arrow),
+            label: 'Jugar',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.article),
+            label: 'Blog',
+          ),
+          
+        ],
+      ),
     );
   }
 }

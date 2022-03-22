@@ -250,64 +250,62 @@ class HomeTeacherWidget extends StatelessWidget {
             ],
           ),
         ),
-        Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Container(
-                    width: 70,
-                    height: 70,
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                        ),
-                        color: Color.fromRGBO(235, 238, 255, 1)),
-                    child: ClipOval(
-                      child: SizedBox.fromSize(
-                        size: const Size.fromRadius(18),
-                        child: Image.asset('../assets/images/Image1.png'),
-                      ),
-                    )),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'Ajedrez para principiantes',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontFamily: 'Inter',
-                              fontSize: 16,
-                              letterSpacing: -0.5,
-                              fontWeight: FontWeight.bold,
-                              height: 1.3),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          'Curso completo de Ajedrez',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontFamily: 'Inter',
-                              fontSize: 15,
-                              letterSpacing: -0.5,
-                              fontWeight: FontWeight.normal,
-                              height: 1.3),
-                        ),
-                      ],
+        Row(
+          children: [
+            Container(
+                width: 70,
+                height: 70,
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
                     ),
+                    color: Color.fromRGBO(235, 238, 255, 1)),
+                child: ClipOval(
+                  child: SizedBox.fromSize(
+                    size: const Size.fromRadius(18),
+                    child: Image.asset('../assets/images/Image1.png'),
                   ),
-                )
-              ],
-            )),
+                )),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      'Ajedrez para principiantes',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontFamily: 'Inter',
+                          fontSize: 16,
+                          letterSpacing: -0.5,
+                          fontWeight: FontWeight.bold,
+                          height: 1.3),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'Curso completo de Ajedrez',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontFamily: 'Inter',
+                          fontSize: 15,
+                          letterSpacing: -0.5,
+                          fontWeight: FontWeight.normal,
+                          height: 1.3),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
         const Padding(
           padding: EdgeInsets.only(left: 20.0, right: 8.0),
           child: Divider(color: Color.fromRGBO(73, 69, 79, 1)),
