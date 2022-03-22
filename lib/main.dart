@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_ui/screens/login.dart';
+import 'package:proyecto_ui/screens/register.dart';
 import 'package:proyecto_ui/screens/home.dart';
 import 'package:proyecto_ui/screens/home_teacher.dart';
 import 'package:proyecto_ui/screens/mis_cursos.dart';
@@ -59,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
           //Expanded(child: ProfileWidget())
           //Expanded(child: MisCursosWidget())
           //Expanded(child: HomeWidget())
-          Expanded(child: AnalysisBoard())
+          Expanded(child: LoginWidget())
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
