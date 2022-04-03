@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_ui/models/blog_item.dart';
 import '../models/curso.dart';
 
 class BlogWidget extends StatelessWidget {
-  List<Curso> entries = <Curso>[
-    Curso(0, 'Ajedrez para principiantes', '3 h 30 min',
-        'Paso a paso para principiantes'),
-    Curso(0, 'Ajedrez para principiantes', '3 h 30 min',
-        'Paso a paso para principiantes')
+  List<BlogItem> entries = <BlogItem>[
+    BlogItem(0, 'Trampas en el ajedrez por internet', 'John Doe',
+        'Mar. 18, 2022'),
+    BlogItem(1, '¿Como hallar la maniobra ganadora en el medio...', 'Will Smith',
+        'Mar. 15, 2022'),
+        BlogItem(2, 'Lectura de ajedrez para principiantes', 'John Doe',
+        'Mar. 14, 2022'),
   ];
 
   @override
@@ -57,7 +60,7 @@ class BlogWidget extends StatelessWidget {
                 width: 48,
                 height: 48,
                 child: IconButton(
-                  icon: const Icon(Icons.notifications),
+                  icon: const Icon(Icons.post_add),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   onPressed: () {},
@@ -237,11 +240,11 @@ class BlogWidget extends StatelessWidget {
     );
   }
 
-  Widget _row(Curso item, int index) {
+  Widget _row(BlogItem item, int index) {
     return _card(item, index);
   }
 
-  Widget _card(Curso item, int index) {
+  Widget _card(BlogItem item, int index) {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
@@ -286,11 +289,11 @@ class BlogWidget extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
-                          'Trampas en el Ajedrez por Internet',
+                          item.name,
                           textAlign: TextAlign.left,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
                               fontFamily: 'Inter',
                               fontSize: 16,
@@ -299,9 +302,9 @@ class BlogWidget extends StatelessWidget {
                               height: 1.3),
                         ),
                         Text(
-                          'John Doe',
+                          item.auth,
                           textAlign: TextAlign.left,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
                               fontFamily: 'Inter',
                               fontSize: 14,
@@ -310,9 +313,9 @@ class BlogWidget extends StatelessWidget {
                               height: 1.3),
                         ),
                         Text(
-                          'Mar. 18, 2022',
+                          item.date,
                           textAlign: TextAlign.left,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Color.fromRGBO(73, 69, 79, 1),
                               fontFamily: 'Inter',
                               fontSize: 12,
@@ -328,7 +331,7 @@ class BlogWidget extends StatelessWidget {
                   width: 48,
                   height: 48,
                   child: IconButton(
-                    icon: const Icon(Icons.notifications),
+                    icon: const Icon(Icons.favorite),
                     padding:
                         const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                     onPressed: () {},
