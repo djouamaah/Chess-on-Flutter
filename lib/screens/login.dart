@@ -11,10 +11,12 @@ class LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<LoginWidget> {
   static const _colorPrimary = Color(0xFF4E55F7);
-  static const _colorBPrimary = Color(0xFFEBEEFF);
+  //static const _colorBPrimary = Color(0xFFEBEEFF);
   static const _colorSecondary = Color(0xFF1D192B);
   static const _colorBSecondary = Color(0xFF49454F);
   static const _colorNeutral = Color(0xFFECF1F7);
+  final correoController = TextEditingController();
+
   void click() {}
 
   @override
@@ -81,8 +83,9 @@ class _LoginWidgetState extends State<LoginWidget> {
             Container(
               width: 343,
               height: 56,
-              child: const TextField(
-                decoration: InputDecoration(
+              child: TextField(
+                controller: correoController,
+                decoration: const InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
                     labelText: "Correo",
@@ -181,10 +184,18 @@ class _LoginWidgetState extends State<LoginWidget> {
   }
 
   void openHomeScreen() {
-    Navigator.pushReplacement(
-    context,
-    MaterialPageRoute(builder: (context) => const MyHomePage(title: "MyApp")),
-  );
+    String email = correoController.text;
+    bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
+    if(emailValid){
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const MyHomePage(title: "MyApp")),
+      );
+    }else{
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Invalid Email"),
+      ));
+    }
   }
 
 }
