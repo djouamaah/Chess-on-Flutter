@@ -1,163 +1,343 @@
 import 'package:flutter/material.dart';
+import '../models/curso.dart';
 
-void main() => runApp(BlogWidget());
-
-class BlogWidget extends StatefulWidget {
-  @override
-  _BlogWidgetState createState() => _BlogWidgetState();
-}
-
-class _BlogWidgetState extends State<BlogWidget> {
-  String notificaciones = "Notificaciones";
-
-  void _onPressAdd() {}
-  void _onPressed() {}
-  void _onPressedLike() {}
+class BlogWidget extends StatelessWidget {
+  List<Curso> entries = <Curso>[
+    Curso(0, 'Ajedrez para principiantes', '3 h 30 min',
+        'Paso a paso para principiantes'),
+    Curso(0, 'Ajedrez para principiantes', '3 h 30 min',
+        'Paso a paso para principiantes')
+  ];
 
   @override
-  _retunPage() {
-    return (Container(
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Expanded(
-                flex: 1,
-                child: Padding(
-                    padding: const EdgeInsets.all(0),
-                    child: Container(
-                        padding: const EdgeInsets.all(1.0),
-                        alignment: Alignment.centerRight,
-                        child: TextField(
-                            style: TextStyle(
-                              fontSize: 25.0,
-                              color: Color(0xff5057FE),
-                            ),
-                            decoration: InputDecoration(
-                                contentPadding:
-                                    EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                                suffixIcon: Icon(
-                                  Icons.search,
-                                  color: Color(0xff5057FE),
-                                ),
-                                hintText: "Buscar entrada de blog",
-                                border: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color(0xff5057FE), width: 32.0),
-                                    borderRadius: BorderRadius.circular(25.0)),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors.white, width: 32.0),
-                                    borderRadius:
-                                        BorderRadius.circular(25.0))))))),
-            Expanded(
-                flex: 1,
-                child: Padding(
-                    padding: const EdgeInsets.all(1.0),
-                    child: Container(
-                        color: Colors.white,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Blog: ',
-                              style: TextStyle(
-                                fontSize: 25.0,
-                                color: Colors.black,
-                              ),
-                            ),
-                            BlogLists('Todos'),
-                            BlogLists('Populares'),
-                            BlogLists('Últimos')
-                          ],
-                        )))),
-            Expanded(
-                flex: 8,
-                child: Padding(
-                    padding: const EdgeInsets.all(1.0),
-                    child: Container(
-                        color: Colors.white,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            BlogListItems('Trampas en el ajedrez por internet',
-                                'Jon Doe', 'Mar. 16, 2022'),
-                            BlogListItems(
-                                '¿Como hallar la maniobra ganadora en el medio...',
-                                'Jon Doe',
-                                'Mar. 16, 2022'),
-                            BlogListItems('Lectura del Ajedrez para tontos',
-                                'Jon Doe', 'Mar. 16, 2022')
-                          ],
-                        )))),
-          ]),
-    ));
-  }
-
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: const Text(
-              'Blog ',
-              textAlign: TextAlign.left,
-              style: TextStyle(color: Colors.black),
-            ),
-            backgroundColor: Colors.white,
-            actions: [
-              IconButton(
-                  color: Colors.black,
-                  onPressed: _onPressAdd,
-                  icon: Icon(Icons.playlist_add, size: 30.0))
+    return Container(
+      decoration: const BoxDecoration(
+        color: Color.fromRGBO(236, 241, 247, 1),
+      ),
+      child: Column(children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text(
+                        'Blog',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            color: Color.fromRGBO(73, 69, 79, 1),
+                            fontFamily: 'Inter',
+                            fontSize: 26,
+                            letterSpacing: -0.5,
+                            fontWeight: FontWeight.bold,
+                            height: 1.3),
+                      ),
+                      Text(
+                        'Comparte tus conocimientos',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            color: Color.fromRGBO(73, 69, 79, 1),
+                            fontFamily: 'Inter',
+                            fontSize: 15,
+                            letterSpacing: -0.5,
+                            fontWeight: FontWeight.normal,
+                            height: 1.3),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                width: 48,
+                height: 48,
+                child: IconButton(
+                  icon: const Icon(Icons.notifications),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                  onPressed: () {},
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: const Color.fromRGBO(73, 69, 79, 1),
+                    width: 1,
+                  ),
+                  borderRadius:
+                      const BorderRadius.all(Radius.elliptical(48, 48)),
+                ),
+              ),
             ],
           ),
-          body: Center(
-            child: _retunPage(),
-          )),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Expanded(
+            child: Container(
+              padding: const EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  topRight: Radius.circular(16),
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
+                ),
+                color: const Color.fromRGBO(255, 255, 255, 1),
+                border: Border.all(
+                  color: const Color.fromRGBO(73, 69, 79, 1),
+                  width: 1,
+                ),
+              ),
+              child: Row(
+                //mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const SizedBox(width: 20),
+                  const Expanded(
+                    child: Text(
+                      'Buscar dentro de tus cursos',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          color: Color.fromRGBO(73, 69, 79, 1),
+                          fontFamily: 'Inter',
+                          fontSize: 15,
+                          letterSpacing: -0.5,
+                          fontWeight: FontWeight.normal,
+                          height: 1.3),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Center(
+                        child: Image.asset(
+                      '../assets/images/search.png',
+                      height: 20,
+                      width: 20,
+                    )),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+          child: Row(
+            children: [
+              const Text(
+                'Cursos:',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: Color.fromRGBO(73, 69, 79, 1),
+                    fontFamily: 'Inter',
+                    fontSize: 15,
+                    letterSpacing: -0.5,
+                    fontWeight: FontWeight.normal,
+                    height: 1.3),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  padding: const EdgeInsets.only(
+                      top: 8.0, bottom: 8.0, left: 10, right: 10),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    ),
+                    color: Color.fromRGBO(80, 87, 254, 1),
+                  ),
+                  child: const Text(
+                    'Todos',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontFamily: 'Inter',
+                        fontSize: 15,
+                        letterSpacing: -0.5,
+                        fontWeight: FontWeight.normal,
+                        height: 1.3),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  padding: const EdgeInsets.only(
+                      top: 8.0, bottom: 8.0, left: 10, right: 10),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    ),
+                    color: Color.fromRGBO(80, 87, 254, 1),
+                  ),
+                  child: const Text(
+                    'Populares',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontFamily: 'Inter',
+                        fontSize: 15,
+                        letterSpacing: -0.5,
+                        fontWeight: FontWeight.normal,
+                        height: 1.3),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  padding: const EdgeInsets.only(
+                      top: 8.0, bottom: 8.0, left: 10, right: 10),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    ),
+                    color: Color.fromRGBO(80, 87, 254, 1),
+                  ),
+                  child: const Text(
+                    'Últimos',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontFamily: 'Inter',
+                        fontSize: 15,
+                        letterSpacing: -0.5,
+                        fontWeight: FontWeight.normal,
+                        height: 1.3),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+        Expanded(
+          child: ListView.builder(
+              padding: const EdgeInsets.all(8),
+              itemCount: entries.length,
+              itemBuilder: (context, index) {
+                return _row(entries[index], index);
+              }),
+        )
+      ]),
     );
   }
 
-  Widget BlogLists(number) {
+  Widget _row(Curso item, int index) {
+    return _card(item, index);
+  }
+
+  Widget _card(Curso item, int index) {
     return Expanded(
       child: Padding(
-          padding: const EdgeInsets.all(3),
-          child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  primary: Color(0xff5057FE), onSurface: Colors.blueGrey),
-              onPressed: () => {_onPressed()},
-              child: Text(number.toString(), style: TextStyle(fontSize: 14)))),
-    );
-  }
-
-  Widget BlogListItems(Texto, Autor, Date) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      margin: EdgeInsets.all(15),
-      elevation: 10,
-      color: Colors.white,
-      child: Column(
-        children: <Widget>[
-          ListTile(
-            contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-            title: Text(Texto),
-            subtitle: Text(Autor),
-            trailing: Text(Date),
-            leading: Image(
-              image: NetworkImage(
-                  'https://media.istockphoto.com/photos/chess-game-strategy-and-decision-making-picture-id111993299?k=20&m=111993299&s=170667a&w=0&h=H99GLLtNyU1Tddx8rLQBg4MG0hzKa3JdXyLhUeHH6Y8='),
+        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(16),
+                topRight: Radius.circular(16),
+                bottomLeft: Radius.circular(16),
+                bottomRight: Radius.circular(16),
+              ),
+              color: const Color.fromRGBO(255, 255, 255, 1),
+              border: Border.all(
+                color: const Color.fromRGBO(73, 69, 79, 1),
+                width: 1,
+              ),
+            ),
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(18),
+                    child: SizedBox(
+                      height: 70,
+                      width: 70,
+                      child: Stack(fit: StackFit.expand, children: [
+                        Image.asset(
+                          '../assets/images/Ajedrez.png',
+                          height: 200,
+                          fit: BoxFit.cover,
+                        ),
+                      ]),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          'Trampas en el Ajedrez por Internet',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontFamily: 'Inter',
+                              fontSize: 16,
+                              letterSpacing: -0.5,
+                              fontWeight: FontWeight.bold,
+                              height: 1.3),
+                        ),
+                        Text(
+                          'John Doe',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontFamily: 'Inter',
+                              fontSize: 14,
+                              letterSpacing: -0.5,
+                              fontWeight: FontWeight.normal,
+                              height: 1.3),
+                        ),
+                        Text(
+                          'Mar. 18, 2022',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Color.fromRGBO(73, 69, 79, 1),
+                              fontFamily: 'Inter',
+                              fontSize: 12,
+                              letterSpacing: -0.5,
+                              fontWeight: FontWeight.normal,
+                              height: 1.3),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 48,
+                  height: 48,
+                  child: IconButton(
+                    icon: const Icon(Icons.notifications),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                    onPressed: () {},
+                  ),
+                ),
+              ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              IconButton(
-                  color: Color(0xff5057FE),
-                  onPressed: _onPressedLike,
-                  icon: Icon(Icons.favorite_border_outlined, size: 30.0)),
-            ],
-          )
-        ],
+        ),
       ),
     );
   }

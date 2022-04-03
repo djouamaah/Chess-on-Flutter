@@ -24,8 +24,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      //home: MyHomePage(title: "MyApp"),
-      home: LoginWidget()
+      home: MyHomePage(title: "MyApp"),
+      //home: LoginWidget()
     );
   }
 }
@@ -45,12 +45,14 @@ class _MyHomePageState extends State<MyHomePage> {
   static const _colorSecondary = Color(0xFF1D192B);
   static const _colorBSecondary = Color(0xFF49454F);
   static const _colorNeutral = Color(0xFFECF1F7);
-  int _currentIndex = 0;
+  //int _currentIndex = 0;
+  int _currentIndex = 2;
   final List _children = [
     HomeTeacherWidget(),
     AnalysisBoard(),
     BlogWidget(),
-    ProfileWidget()
+    //ProfileWidget()
+    HomeWidget()
   ];
 
   void onTabTapped(int index) {
