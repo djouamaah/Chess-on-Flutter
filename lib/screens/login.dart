@@ -15,7 +15,9 @@ class _LoginWidgetState extends State<LoginWidget> {
   static const _colorSecondary = Color(0xFF1D192B);
   static const _colorBSecondary = Color(0xFF49454F);
   static const _colorNeutral = Color(0xFFECF1F7);
+  
   final correoController = TextEditingController();
+  final passController = TextEditingController();
 
   void click() {}
 
@@ -105,8 +107,9 @@ class _LoginWidgetState extends State<LoginWidget> {
             Container(
               width: 343,
               height: 56,
-              child: const TextField(
-                decoration: InputDecoration(
+              child: TextField(
+                controller: passController,
+                decoration: const InputDecoration(
                     suffix: Icon(
                       Icons.visibility,
                       color: _colorBSecondary,
@@ -185,15 +188,16 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   void openHomeScreen() {
     String email = correoController.text;
+    String pass = passController.text;
     bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
-    if(emailValid){
+    if(emailValid && pass.length > 5){
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const MyHomePage(title: "MyApp")),
       );
     }else{
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Invalid Email"),
+        content: Text("Invalid Email or Password"),
       ));
     }
   }
