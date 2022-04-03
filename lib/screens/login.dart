@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_ui/main.dart';
+import 'package:proyecto_ui/screens/home.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -154,6 +156,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   ),
                 ),
               ),
+              onTap: openHomeScreen,
             ),
             const SizedBox(
               height: 16,
@@ -176,4 +179,12 @@ class _LoginWidgetState extends State<LoginWidget> {
       )),
     );
   }
+
+  void openHomeScreen() {
+    Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(builder: (context) => const MyHomePage(title: "MyApp")),
+  );
+  }
+
 }
