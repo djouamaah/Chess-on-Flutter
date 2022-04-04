@@ -96,8 +96,8 @@ class _PasswordWidgetState extends State<PasswordWidget> {
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 15, vertical: 0),
                                         onPressed: () {
-                                          //Navigator.of(context).pushNamed('/account');
-                                        },
+                                           Navigator.pop(context);                                   
+                                                                               },
                                       ),
                                       decoration: BoxDecoration(
                                         border: Border.all(
