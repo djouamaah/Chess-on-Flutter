@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'password.dart';
+import 'package:proyecto_ui/screens/password.dart';
 
 void main() => runApp(AccountWidget());
 
@@ -130,8 +130,11 @@ class _AccountWidgetState extends State<AccountWidget> {
                             ],
                           ),
                         ),
+                        
                       ],
+                      
                     ),
+                    
                   ),
                 ]));
       }
@@ -386,7 +389,12 @@ class _AccountWidgetState extends State<AccountWidget> {
                                             padding: EdgeInsets.symmetric(
                                                 horizontal: 10, vertical: 0),
                                             onPressed: () {
-                                              //Navigator.of(context).pushNamed('/password');
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        PasswordWidget()),
+                                              );
                                             },
                                           ),
                                         ],
@@ -480,8 +488,12 @@ class _AccountWidgetState extends State<AccountWidget> {
                               ),
                             ]),
                           ),
+
+                          
                         ],
+
                       ),
+                      
                     ),
                   ),
                 ),
