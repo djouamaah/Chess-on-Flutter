@@ -215,8 +215,7 @@ class _AccountWidgetState extends State<AccountWidget> {
         );
     }
 
-    return MaterialApp(
-      home: Scaffold(
+    return  Scaffold(
           body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -440,7 +439,7 @@ class _AccountWidgetState extends State<AccountWidget> {
             ),
           ),
         ],
-      )),
-    );
+      ))
+    ;
   }
 }
