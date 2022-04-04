@@ -82,7 +82,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                             Flexible(
                               flex: 1,
                               child: Text(
-                                'Contraseña',
+                                '**********',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                     color: Color.fromRGBO(29, 25, 43, 1),
@@ -90,21 +90,21 @@ class _AccountWidgetState extends State<AccountWidget> {
                                     fontSize: 20,
                                     letterSpacing: -0.5,
                                     //fontWeight: FontWeight.normal,
-                                    fontWeight: FontWeight.normal,
+                                    fontWeight: FontWeight.bold,
                                     height: 1.3),
                               ),
                             ),
                             Flexible(
                               flex: 1,
                               child: Text(
-                                '**********',
+                                'Contraseña',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                     color: Color.fromRGBO(73, 69, 79, 1),
                                     fontFamily: 'Inter',
                                     fontSize: 14,
                                     letterSpacing: 0,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.normal,
                                     height: 1.5),
                               ),
                             ),
@@ -129,10 +129,7 @@ class _AccountWidgetState extends State<AccountWidget> {
           padding: const EdgeInsets.all(16.0),
           child: InkWell(
             onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => PasswordWidget()),
-                );
+                
               },
             child: Row(children: [
               Expanded(
@@ -176,7 +173,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                             Flexible(
                               flex: 1,
                               child: Text(
-                                description,
+                                info,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                     color: Color.fromRGBO(29, 25, 43, 1),
@@ -184,21 +181,21 @@ class _AccountWidgetState extends State<AccountWidget> {
                                     fontSize: 20,
                                     letterSpacing: -0.5,
                                     //fontWeight: FontWeight.normal,
-                                    fontWeight: FontWeight.normal,
+                                    fontWeight: FontWeight.bold,
                                     height: 1.3),
                               ),
                             ),
                             Flexible(
                               flex: 1,
                               child: Text(
-                                info,
+                                description,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                     color: Color.fromRGBO(73, 69, 79, 1),
                                     fontFamily: 'Inter',
                                     fontSize: 14,
                                     letterSpacing: 0,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.normal,
                                     height: 1.5),
                               ),
                             ),
