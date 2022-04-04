@@ -2,19 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:proyecto_ui/main.dart';
 import 'package:proyecto_ui/screens/home.dart';
 
-class LoginWidget extends StatefulWidget {
-  const LoginWidget({Key? key}) : super(key: key);
-
-  @override
-  _LoginWidgetState createState() => _LoginWidgetState();
-}
-
-class _LoginWidgetState extends State<LoginWidget> {
+class LoginWidget extends StatelessWidget {
   static const _colorPrimary = Color(0xFF4E55F7);
   //static const _colorBPrimary = Color(0xFFEBEEFF);
   static const _colorSecondary = Color(0xFF1D192B);
   static const _colorBSecondary = Color(0xFF49454F);
-  static const _colorNeutral = Color(0xFFECF1F7);
+  static const _colorNeutral = Color.fromARGB(255, 255, 255, 255);
   
   final correoController = TextEditingController();
   final passController = TextEditingController();
@@ -28,7 +21,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           child: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(color: _colorNeutral),
+        //decoration: const BoxDecoration(color: _colorNeutral),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -162,7 +155,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   ),
                 ),
               ),
-              onTap: openHomeScreen,
+              onTap: () => openHomeScreen(context),
             ),
             const SizedBox(
               height: 16,
@@ -186,7 +179,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     );
   }
 
-  void openHomeScreen() {
+  void openHomeScreen(BuildContext context) {
     String email = correoController.text;
     String pass = passController.text;
     bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
