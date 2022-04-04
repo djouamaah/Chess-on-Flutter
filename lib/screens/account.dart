@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:proyecto_ui/screens/password.dart';
@@ -24,223 +26,193 @@ class _AccountWidgetState extends State<AccountWidget> {
     String direction = "Km. 5 Puerto Colombia";
     String direccion = "Dirección";
 
+
+
+    
     Widget box_info(String info, String description, Widget bt) {
       if (description == "Contraseña") {
-        return Container(
-            decoration: BoxDecoration(
-              color: Color.fromRGBO(236, 241, 247, 1),
-            ),
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-            child: Column(
-                //crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(16),
-                        topRight: Radius.circular(16),
-                        bottomLeft: Radius.circular(16),
-                        bottomRight: Radius.circular(16),
-                      ),
-                      color: Color.fromRGBO(255, 255, 255, 1),
-                      border: Border.all(
-                        color: Color.fromRGBO(73, 69, 79, 1),
-                        width: 1,
-                      ),
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: InkWell(
+            onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PasswordWidget()),
+                );
+              },
+            child: Row(children: [
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(16),
+                      bottomLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                          decoration: BoxDecoration(),
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Container(
-                                  width: 48,
-                                  height: 48,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(20),
-                                      topRight: Radius.circular(20),
-                                      bottomLeft: Radius.circular(20),
-                                      bottomRight: Radius.circular(20),
-                                    ),
-                                    color: Color.fromRGBO(235, 238, 255, 1),
-                                  ),
-                                  child: Stack(children: <Widget>[
-                                    Positioned(
-                                      top: 5,
-                                      left: 5,
-                                      child: bt,
-                                    ),
-                                  ])),
-                              SizedBox(width: 10),
-                              Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 0, vertical: 0),
-                                child: Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            info,
-                                            textAlign: TextAlign.left,
-                                            style: TextStyle(
-                                                color: Color.fromRGBO(
-                                                    29, 25, 43, 1),
-                                                fontFamily: 'Inter',
-                                                fontSize: 20,
-                                                letterSpacing: -0.5,
-                                                fontWeight: FontWeight.normal,
-                                                height: 1.3),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(height: 0),
-                                      Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            description,
-                                            textAlign: TextAlign.left,
-                                            style: TextStyle(
-                                                color: Color.fromRGBO(
-                                                    73, 69, 79, 1),
-                                                fontFamily: 'Inter',
-                                                fontSize: 14,
-                                                letterSpacing: 0,
-                                                fontWeight: FontWeight.normal,
-                                                height: 1.5),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        
-                      ],
-                      
+                    color: const Color.fromRGBO(255, 255, 255, 1),
+                    border: Border.all(
+                      color: const Color.fromRGBO(73, 69, 79, 1),
+                      width: 1,
                     ),
-                    
                   ),
-                ]));
-      }
-
-      return Container(
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(236, 241, 247, 1),
-          ),
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: <
-                  Widget>[
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  topRight: Radius.circular(16),
-                  bottomLeft: Radius.circular(16),
-                  bottomRight: Radius.circular(16),
-                ),
-                color: Color.fromRGBO(255, 255, 255, 1),
-                border: Border.all(
-                  color: Color.fromRGBO(73, 69, 79, 1),
-                  width: 1,
-                ),
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(),
-                    padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Container(
-                            width: 48,
-                            height: 48,
-                            decoration: BoxDecoration(
+                  child: Row(
+                    //mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Container(
+                          width: 50,
+                          height: 50,
+                          decoration: const BoxDecoration(
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(20),
                                 topRight: Radius.circular(20),
                                 bottomLeft: Radius.circular(20),
                                 bottomRight: Radius.circular(20),
                               ),
-                              color: Color.fromRGBO(235, 238, 255, 1),
+                              color: Color.fromRGBO(235, 238, 255, 1)),
+                          child: Center(child: Image.asset('../assets/images/user.png', width: 20 , height: 20,))),
+                      const SizedBox(width: 20),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: const <Widget>[
+                            Flexible(
+                              flex: 1,
+                              child: Text(
+                                'Contraseña',
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    color: Color.fromRGBO(29, 25, 43, 1),
+                                    fontFamily: 'Inter',
+                                    fontSize: 20,
+                                    letterSpacing: -0.5,
+                                    //fontWeight: FontWeight.normal,
+                                    fontWeight: FontWeight.normal,
+                                    height: 1.3),
+                              ),
                             ),
-                            child: Stack(children: <Widget>[
-                              Positioned(
-                                top: 5,
-                                left: 5,
-                                child: bt,
+                            Flexible(
+                              flex: 1,
+                              child: Text(
+                                '**********',
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    color: Color.fromRGBO(73, 69, 79, 1),
+                                    fontFamily: 'Inter',
+                                    fontSize: 14,
+                                    letterSpacing: 0,
+                                    fontWeight: FontWeight.bold,
+                                    height: 1.5),
                               ),
-                            ])),
-                        SizedBox(width: 10),
-                        Container(
-                          decoration: BoxDecoration(),
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    info,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                        color: Color.fromRGBO(29, 25, 43, 1),
-                                        fontFamily: 'Inter',
-                                        fontSize: 20,
-                                        letterSpacing: -0.5,
-                                        fontWeight: FontWeight.normal,
-                                        height: 1.3),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 0),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    description,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                        color: Color.fromRGBO(73, 69, 79, 1),
-                                        fontFamily: 'Inter',
-                                        fontSize: 14,
-                                        letterSpacing: 0,
-                                        fontWeight: FontWeight.normal,
-                                        height: 1.5),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Center(child: Image.asset('../assets/images/right-arrow.png', height: 20, width: 20,)),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ]),
+          ),
+        );
+        
+        }
+
+      return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: InkWell(
+            onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PasswordWidget()),
+                );
+              },
+            child: Row(children: [
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(16),
+                      bottomLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16),
+                    ),
+                    color: const Color.fromRGBO(255, 255, 255, 1),
+                    border: Border.all(
+                      color: const Color.fromRGBO(73, 69, 79, 1),
+                      width: 1,
                     ),
                   ),
-                ],
-              ),
-            ),
-          ]));
+                  child: Row(
+                    //mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Container(
+                          width: 50,
+                          height: 50,
+                          decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20),
+                                bottomLeft: Radius.circular(20),
+                                bottomRight: Radius.circular(20),
+                              ),
+                              color: Color.fromRGBO(235, 238, 255, 1)),
+                          child: Center(child: bt)),
+                      const SizedBox(width: 20),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children:  <Widget>[
+                            Flexible(
+                              flex: 1,
+                              child: Text(
+                                description,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    color: Color.fromRGBO(29, 25, 43, 1),
+                                    fontFamily: 'Inter',
+                                    fontSize: 20,
+                                    letterSpacing: -0.5,
+                                    //fontWeight: FontWeight.normal,
+                                    fontWeight: FontWeight.normal,
+                                    height: 1.3),
+                              ),
+                            ),
+                            Flexible(
+                              flex: 1,
+                              child: Text(
+                                info,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    color: Color.fromRGBO(73, 69, 79, 1),
+                                    fontFamily: 'Inter',
+                                    fontSize: 14,
+                                    letterSpacing: 0,
+                                    fontWeight: FontWeight.bold,
+                                    height: 1.5),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                
+                    ],
+                  ),
+                ),
+              )
+            ]),
+          ),
+        );
     }
 
     return MaterialApp(
@@ -367,40 +339,11 @@ class _AccountWidgetState extends State<AccountWidget> {
                                       box_info(
                                         password,
                                         contrasena,
-                                        IconButton(
-                                          icon: Icon(Icons.lock),
-                                          color: Color.fromRGBO(80, 87, 254, 1),
-                                          padding: const EdgeInsets.all(0.0),
-                                          onPressed: () {
-                                            //Navigator.of(context).pushNamed('/password');
-                                          },
-                                        ),
+                                        widget
                                       ),
                                     ],
                                   )),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Row(
-                                        children: [
-                                          IconButton(
-                                            icon: Icon(Icons.arrow_forward_ios),
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 10, vertical: 0),
-                                            onPressed: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        PasswordWidget()),
-                                              );
-                                            },
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  )
+                               
                                 ],
                               ),
                               Row(
@@ -488,12 +431,8 @@ class _AccountWidgetState extends State<AccountWidget> {
                               ),
                             ]),
                           ),
-
-                          
                         ],
-
                       ),
-                      
                     ),
                   ),
                 ),
