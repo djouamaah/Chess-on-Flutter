@@ -20,7 +20,7 @@ class LoginWidget extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
           child: Container(
-        width: MediaQuery.of(context).size.width,
+        width: MediaQuery.of(context).size.width - 10,
         height: MediaQuery.of(context).size.height,
         //decoration: const BoxDecoration(color: _colorNeutral),
         child: Column(
@@ -37,7 +37,7 @@ class LoginWidget extends StatelessWidget {
               height: 16,
             ),
             Container(
-                width: 343,
+                width: 348,
                 height: 56,
                 decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -121,20 +121,16 @@ class LoginWidget extends StatelessWidget {
                     )),
               ),
             ),
-            Padding(
+            Container(
+              alignment: Alignment.centerLeft,
               padding: const EdgeInsets.fromLTRB(20, 0, 30, 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    onPressed: click,
-                    child: const Text("¿Olvidaste tu contraseña?",
-                        style: TextStyle(
-                            color: _colorSecondary,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500)),
-                  )
-                ],
+              child: TextButton(
+                onPressed: click,
+                child: const Text("¿Olvidaste tu contraseña?",
+                    style: TextStyle(
+                        color: _colorSecondary,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500)),
               ),
             ),
             GestureDetector(
