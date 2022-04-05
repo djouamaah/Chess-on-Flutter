@@ -70,7 +70,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                               color: Color.fromRGBO(235, 238, 255, 1)),
                           child: Center(
                               child: Image.asset(
-                            '../assets/images/user.png',
+                            'assets/images/user.png',
                             width: 20,
                             height: 20,
                           ))),
@@ -117,7 +117,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                         padding: const EdgeInsets.only(right: 8.0),
                         child: Center(
                             child: Image.asset(
-                          '../assets/images/right-arrow.png',
+                          'assets/images/right-arrow.png',
                           height: 20,
                           width: 20,
                         )),
@@ -393,7 +393,6 @@ class _AccountWidgetState extends State<AccountWidget> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
                                     MaterialButton(
-                                      
                                       minWidth: 45,
                                       height: 60,
                                       child: const Padding(

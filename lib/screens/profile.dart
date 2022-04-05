@@ -49,7 +49,7 @@ class ProfileWidget extends StatelessWidget {
                         child: ClipOval(
                           child: SizedBox.fromSize(
                             size: const Size.fromRadius(20),
-                            child: Image.asset('../assets/images/Image1.png'),
+                            child: Image.asset('assets/images/Image1.png'),
                           ),
                         )),
                     const SizedBox(width: 20),
@@ -99,7 +99,7 @@ class ProfileWidget extends StatelessWidget {
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(right: 8.0),
-                        child: Center(child: Image.asset('../assets/images/logout.png', height: 20, width: 20,)),
+                        child: Center(child: Image.asset('assets/images/logout.png', height: 20, width: 20,)),
                       ),
                     ),
                   ],
@@ -151,7 +151,7 @@ class ProfileWidget extends StatelessWidget {
                                 bottomRight: Radius.circular(20),
                               ),
                               color: Color.fromRGBO(235, 238, 255, 1)),
-                          child: Center(child: Image.asset('../assets/images/user.png', width: 20 , height: 20,))),
+                          child: Center(child: Image.asset('assets/images/user.png', width: 20 , height: 20,))),
                       const SizedBox(width: 20),
                       Expanded(
                         child: Column(
@@ -193,7 +193,7 @@ class ProfileWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
-                        child: Center(child: Image.asset('../assets/images/right-arrow.png', height: 20, width: 20,)),
+                        child: Center(child: Image.asset('assets/images/right-arrow.png', height: 20, width: 20,)),
                       ),
                     ],
                   ),
@@ -242,7 +242,7 @@ class ProfileWidget extends StatelessWidget {
                                 bottomRight: Radius.circular(20),
                               ),
                               color: Color.fromRGBO(235, 238, 255, 1)),
-                          child: Center(child: Image.asset('../assets/images/files-copy.png', width: 20 , height: 20,))),
+                          child: Center(child: Image.asset('assets/images/files-copy.png', width: 20 , height: 20,))),
                       const SizedBox(width: 20),
                       Expanded(
                         child: Column(
@@ -284,7 +284,7 @@ class ProfileWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
-                        child: Center(child: Image.asset('../assets/images/right-arrow.png', height: 20, width: 20,)),
+                        child: Center(child: Image.asset('assets/images/right-arrow.png', height: 20, width: 20,)),
                       ),
                     ],
                   ),
@@ -333,7 +333,7 @@ class ProfileWidget extends StatelessWidget {
                                 bottomRight: Radius.circular(20),
                               ),
                               color: Color.fromRGBO(235, 238, 255, 1)),
-                          child: Center(child: Image.asset('../assets/images/gear.png', width: 20 , height: 20,))),
+                          child: Center(child: Image.asset('assets/images/gear.png', width: 20 , height: 20,))),
                       const SizedBox(width: 20),
                       Expanded(
                         child: Column(
@@ -375,7 +375,7 @@ class ProfileWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
-                        child: Center(child: Image.asset('../assets/images/right-arrow.png', height: 20, width: 20,)),
+                        child: Center(child: Image.asset('assets/images/right-arrow.png', height: 20, width: 20,)),
                       ),
                     ],
                   ),
@@ -387,12 +387,6 @@ class ProfileWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
-            onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginWidget()),
-                );
-              },
             child: Row(children: [
               Expanded(
                 child: Container(
@@ -424,7 +418,7 @@ class ProfileWidget extends StatelessWidget {
                                 bottomRight: Radius.circular(20),
                               ),
                               color: Color.fromRGBO(235, 238, 255, 1)),
-                          child: Center(child: Image.asset('../assets/images/question.png', width: 20 , height: 20,))),
+                          child: Center(child: Image.asset('assets/images/question.png', width: 20 , height: 20,))),
                       const SizedBox(width: 20),
                       Expanded(
                         child: Column(
@@ -466,7 +460,7 @@ class ProfileWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
-                        child: Center(child: Image.asset('../assets/images/right-arrow.png', height: 20, width: 20,)),
+                        child: Center(child: Image.asset('assets/images/right-arrow.png', height: 20, width: 20,)),
                       ),
                     ],
                   ),

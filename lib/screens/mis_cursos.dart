@@ -99,7 +99,7 @@ class MisCursosWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(right: 8.0),
                       child: Center(
                           child: Image.asset(
-                        '../assets/images/search.png',
+                        'assets/images/search.png',
                         height: 20,
                         width: 20,
                       )),
@@ -155,7 +155,7 @@ class MisCursosWidget extends StatelessWidget {
                   height: 200,
                   child: Stack(fit: StackFit.expand, children: [
                     Image.asset(
-                      '../assets/images/Ajedrez.png',
+                      'assets/images/Ajedrez.png',
                       height: 200,
                       fit: BoxFit.cover,
                     ),

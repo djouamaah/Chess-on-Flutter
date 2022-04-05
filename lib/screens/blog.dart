@@ -116,7 +116,7 @@ class BlogWidget extends StatelessWidget {
                     padding: const EdgeInsets.only(right: 8.0),
                     child: Center(
                         child: Image.asset(
-                      '../assets/images/search.png',
+                      'assets/images/search.png',
                       height: 20,
                       width: 20,
                     )),
@@ -275,7 +275,7 @@ class BlogWidget extends StatelessWidget {
                       width: 70,
                       child: Stack(fit: StackFit.expand, children: [
                         Image.asset(
-                          '../assets/images/Ajedrez.png',
+                          'assets/images/Ajedrez.png',
                           height: 200,
                           fit: BoxFit.cover,
                         ),
@@ -331,7 +331,7 @@ class BlogWidget extends StatelessWidget {
                   width: 48,
                   height: 48,
                   child: IconButton(
-                    icon: const Icon(Icons.favorite),
+                    icon: const Icon(Icons.favorite_border),
                     padding:
                         const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                     onPressed: () {},

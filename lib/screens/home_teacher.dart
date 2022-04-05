@@ -113,7 +113,7 @@ class HomeTeacherWidget extends StatelessWidget {
                     padding: const EdgeInsets.only(right: 8.0),
                     child: Center(
                         child: Image.asset(
-                      '../assets/images/search.png',
+                      'assets/images/search.png',
                       height: 20,
                       width: 20,
                     )),
@@ -268,7 +268,7 @@ class HomeTeacherWidget extends StatelessWidget {
                     child: ClipOval(
                       child: SizedBox.fromSize(
                         size: const Size.fromRadius(18),
-                        child: Image.asset('../assets/images/Ajedrez.png'),
+                        child: Image.asset('assets/images/Ajedrez.png'),
                       ),
                     )),
                 Expanded(
@@ -330,7 +330,7 @@ class HomeTeacherWidget extends StatelessWidget {
                     child: ClipOval(
                       child: SizedBox.fromSize(
                         size: const Size.fromRadius(18),
-                        child: Image.asset('../assets/images/Ajedrez.png'),
+                        child: Image.asset('assets/images/Ajedrez.png'),
                       ),
                     )),
                 Expanded(

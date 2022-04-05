@@ -45,8 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
   static const _colorSecondary = Color(0xFF1D192B);
   static const _colorBSecondary = Color(0xFF49454F);
   static const _colorNeutral = Color(0xFFECF1F7);
-  //int _currentIndex = 0;
-  int _currentIndex = 3;
+  int _currentIndex = 0;
+  //int _currentIndex = 3;
   final List _children = [
     HomeTeacherWidget(),
     AnalysisBoard(),
