@@ -122,7 +122,7 @@ class LoginWidget extends StatelessWidget {
               ),
             ),
             Container(
-              alignment: Alignment.centerLeft,
+              alignment: Alignment.center,
               padding: const EdgeInsets.fromLTRB(20, 0, 30, 0),
               child: TextButton(
                 onPressed: click,
