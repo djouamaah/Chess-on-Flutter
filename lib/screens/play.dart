@@ -229,7 +229,7 @@ class _AnswersWidgetState extends State<AnswersWidget> {
               ],
             ),
           ),
-          SizedBox(height: 16),
+          SizedBox(height: 8),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
