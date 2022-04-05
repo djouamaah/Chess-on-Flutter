@@ -38,7 +38,7 @@ class _PasswordWidgetState extends State<PasswordWidget> {
                       style: TextStyle(
                           color: Color.fromRGBO(73, 69, 79, 1),
                           fontFamily: 'Inter',
-                          fontSize: 25,
+                          fontSize: 18,
                           letterSpacing: 0,
                           fontWeight: FontWeight.bold,
                           height: 1.5),
@@ -59,8 +59,7 @@ class _PasswordWidgetState extends State<PasswordWidget> {
   Widget build(BuildContext context) {
     // Figma Flutter Generator PasswordWidget - FRAME
 
-    return MaterialApp(
-        home: Scaffold(
+    return Scaffold(
             body: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -181,7 +180,7 @@ class _PasswordWidgetState extends State<PasswordWidget> {
                                             color: Color.fromRGBO(
                                                 255, 255, 255, 1),
                                             fontFamily: 'Inter',
-                                            fontSize: 25,
+                                            fontSize: 18,
                                             letterSpacing: 0,
                                             fontWeight: FontWeight.normal,
                                             height: 1.125),
@@ -201,6 +200,6 @@ class _PasswordWidgetState extends State<PasswordWidget> {
           ),
         ),
       ],
-    )));
+    ));
   }
 }
