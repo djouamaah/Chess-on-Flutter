@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:proyecto_ui/controllers/authentication_controller.dart';
+import 'package:proyecto_ui/screens/content_page.dart';
 
 import 'login.dart';
 
-class RegisterWidget extends StatefulWidget {
-  const RegisterWidget({Key? key}) : super(key: key);
-
-  @override
-  _RegisterWidgetState createState() => _RegisterWidgetState();
-}
-
-class _RegisterWidgetState extends State<RegisterWidget> {
+class RegisterWidget extends StatelessWidget {
   static const _colorPrimary = Color(0xFF4E55F7);
   static const _colorBPrimary = Color(0xFFEBEEFF);
   static const _colorSecondary = Color(0xFF1D192B);
   static const _colorBSecondary = Color(0xFF49454F);
   static const _colorNeutral = Color(0xFFECF1F7);
+
+  AuthenticationController authenticationController = Get.find();
+
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passController = TextEditingController();
+
   void click() {}
 
   @override
@@ -51,8 +54,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
             Container(
               width: 343,
               height: 56,
-              child: const TextField(
-                decoration: InputDecoration(
+              child: TextField(
+                controller: nameController,
+                decoration: const InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
                     labelText: "Nombre",
@@ -72,8 +76,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
             Container(
               width: 343,
               height: 56,
-              child: const TextField(
-                decoration: InputDecoration(
+              child: TextField(
+                controller: emailController,
+                decoration: const InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
                     labelText: "Correo",
@@ -93,8 +98,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
             Container(
               width: 343,
               height: 56,
-              child: const TextField(
-                decoration: InputDecoration(
+              child: TextField(
+                controller: passController,
+                decoration: const InputDecoration(
                     suffix: Icon(
                       Icons.visibility,
                       color: _colorBSecondary,
@@ -116,6 +122,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               height: 16,
             ),
             GestureDetector(
+              onTap: () => clickRegistrarse(context),
               child: Container(
                 alignment: Alignment.center,
                 width: 343,
@@ -142,12 +149,12 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: (){
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginWidget()),
-                );
-              },
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginWidget()),
+                    );
+                  },
                   child: const Text('Iniciar sesión',
                       style: TextStyle(
                           color: _colorSecondary,
@@ -160,5 +167,46 @@ class _RegisterWidgetState extends State<RegisterWidget> {
         ),
       )),
     );
+  }
+
+  void clickRegistrarse(BuildContext context) {
+    /*authenticationController.login('donny@mail.com', '123456').then((value) {
+      
+    });*/
+
+    String email = emailController.text;
+    String pass = passController.text;
+    String name = nameController.text;
+
+    bool emailValid = RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(email);
+    if (emailValid && pass.length > 5 && name.isNotEmpty) {
+      authenticationController.registerUser(name, email, pass).then((value) {
+        print("llega aca 1");
+        if (value == "true") {
+          print("llega aca 2");
+          authenticationController.login(email, pass).then((value) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => ContentPage()),
+            );
+          });
+        } else {
+          print("llega aca 3");
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text("Sign up Error"),
+          ));
+        }
+      }).catchError((e) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(e.toString()),
+        ));
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Invalid Email or Password"),
+      ));
+    }
   }
 }

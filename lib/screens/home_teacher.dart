@@ -1,7 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:proyecto_ui/controllers/authentication_controller.dart';
 import '../models/curso.dart';
 
 class HomeTeacherWidget extends StatelessWidget {
+
+  AuthenticationController authenticationController = Get.find();
+
   List<Curso> entries = <Curso>[
     Curso(0, 'Ajedrez para principiantes', '3 h 30 min',
         'Paso a paso para principiantes'),
@@ -26,8 +32,8 @@ class HomeTeacherWidget extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text(
+                    children: [
+                      const Text(
                         'Hola',
                         textAlign: TextAlign.left,
                         style: TextStyle(
@@ -39,9 +45,10 @@ class HomeTeacherWidget extends StatelessWidget {
                             height: 1.3),
                       ),
                       Text(
-                        'John Doe',
+                        //'John Doe',
+                        authenticationController.getUserDisplayName(),
                         textAlign: TextAlign.left,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Color.fromRGBO(73, 69, 79, 1),
                             fontFamily: 'Inter',
                             fontSize: 26,
@@ -377,4 +384,5 @@ class HomeTeacherWidget extends StatelessWidget {
       ]),
     );
   }
+
 }

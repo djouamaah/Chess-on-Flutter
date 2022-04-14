@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:proyecto_ui/controllers/authentication_controller.dart';
 import 'package:proyecto_ui/screens/account.dart';
 import 'package:proyecto_ui/screens/configuration.dart';
 import 'package:proyecto_ui/screens/login.dart';
 import 'package:proyecto_ui/screens/mis_cursos.dart';
 
 class ProfileWidget extends StatelessWidget {
+  AuthenticationController authenticationController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     // Figma Flutter Generator ProfileWidget - FRAME
@@ -58,8 +62,8 @@ class ProfileWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
-                        children: const <Widget>[
-                          Flexible(
+                        children: <Widget>[
+                          const Flexible(
                             flex: 1,
                             child: Text(
                               'Bienvenido',
@@ -76,9 +80,9 @@ class ProfileWidget extends StatelessWidget {
                           Flexible(
                             flex: 1,
                             child: Text(
-                              'John Doe',
+                              authenticationController.getUserDisplayName(),
                               textAlign: TextAlign.left,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Color.fromRGBO(29, 25, 43, 1),
                                   fontFamily: 'Inter',
                                   fontSize: 18,
@@ -91,15 +95,23 @@ class ProfileWidget extends StatelessWidget {
                       ),
                     ),
                     InkWell(
-                      onTap: () => {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => LoginWidget()),
-                        )
+                      onTap: () {
+                        authenticationController.logout().then((value) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginWidget()),
+                          );
+                        });
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(right: 8.0),
-                        child: Center(child: Image.asset('assets/images/logout.png', height: 20, width: 20,)),
+                        child: Center(
+                            child: Image.asset(
+                          'assets/images/logout.png',
+                          height: 20,
+                          width: 20,
+                        )),
                       ),
                     ),
                   ],
@@ -108,18 +120,18 @@ class ProfileWidget extends StatelessWidget {
             )
           ]),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
             onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AccountWidget()),
-                );
-              },
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AccountWidget()),
+              );
+            },
             child: Row(children: [
               Expanded(
                 child: Container(
@@ -151,7 +163,12 @@ class ProfileWidget extends StatelessWidget {
                                 bottomRight: Radius.circular(20),
                               ),
                               color: Color.fromRGBO(235, 238, 255, 1)),
-                          child: Center(child: Image.asset('assets/images/user.png', width: 20 , height: 20,))),
+                          child: Center(
+                              child: Image.asset(
+                            'assets/images/user.png',
+                            width: 20,
+                            height: 20,
+                          ))),
                       const SizedBox(width: 20),
                       Expanded(
                         child: Column(
@@ -193,7 +210,12 @@ class ProfileWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
-                        child: Center(child: Image.asset('assets/images/right-arrow.png', height: 20, width: 20,)),
+                        child: Center(
+                            child: Image.asset(
+                          'assets/images/right-arrow.png',
+                          height: 20,
+                          width: 20,
+                        )),
                       ),
                     ],
                   ),
@@ -206,11 +228,11 @@ class ProfileWidget extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
             onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MisCursosWidget()),
-                );
-              },
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MisCursosWidget()),
+              );
+            },
             child: Row(children: [
               Expanded(
                 child: Container(
@@ -242,7 +264,12 @@ class ProfileWidget extends StatelessWidget {
                                 bottomRight: Radius.circular(20),
                               ),
                               color: Color.fromRGBO(235, 238, 255, 1)),
-                          child: Center(child: Image.asset('assets/images/files-copy.png', width: 20 , height: 20,))),
+                          child: Center(
+                              child: Image.asset(
+                            'assets/images/files-copy.png',
+                            width: 20,
+                            height: 20,
+                          ))),
                       const SizedBox(width: 20),
                       Expanded(
                         child: Column(
@@ -284,7 +311,12 @@ class ProfileWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
-                        child: Center(child: Image.asset('assets/images/right-arrow.png', height: 20, width: 20,)),
+                        child: Center(
+                            child: Image.asset(
+                          'assets/images/right-arrow.png',
+                          height: 20,
+                          width: 20,
+                        )),
                       ),
                     ],
                   ),
@@ -297,11 +329,11 @@ class ProfileWidget extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
             onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SettingsWidget()),
-                );
-              },
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsWidget()),
+              );
+            },
             child: Row(children: [
               Expanded(
                 child: Container(
@@ -333,7 +365,12 @@ class ProfileWidget extends StatelessWidget {
                                 bottomRight: Radius.circular(20),
                               ),
                               color: Color.fromRGBO(235, 238, 255, 1)),
-                          child: Center(child: Image.asset('assets/images/gear.png', width: 20 , height: 20,))),
+                          child: Center(
+                              child: Image.asset(
+                            'assets/images/gear.png',
+                            width: 20,
+                            height: 20,
+                          ))),
                       const SizedBox(width: 20),
                       Expanded(
                         child: Column(
@@ -375,7 +412,12 @@ class ProfileWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
-                        child: Center(child: Image.asset('assets/images/right-arrow.png', height: 20, width: 20,)),
+                        child: Center(
+                            child: Image.asset(
+                          'assets/images/right-arrow.png',
+                          height: 20,
+                          width: 20,
+                        )),
                       ),
                     ],
                   ),
@@ -418,7 +460,12 @@ class ProfileWidget extends StatelessWidget {
                                 bottomRight: Radius.circular(20),
                               ),
                               color: Color.fromRGBO(235, 238, 255, 1)),
-                          child: Center(child: Image.asset('assets/images/question.png', width: 20 , height: 20,))),
+                          child: Center(
+                              child: Image.asset(
+                            'assets/images/question.png',
+                            width: 20,
+                            height: 20,
+                          ))),
                       const SizedBox(width: 20),
                       Expanded(
                         child: Column(
@@ -460,7 +507,12 @@ class ProfileWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
-                        child: Center(child: Image.asset('assets/images/right-arrow.png', height: 20, width: 20,)),
+                        child: Center(
+                            child: Image.asset(
+                          'assets/images/right-arrow.png',
+                          height: 20,
+                          width: 20,
+                        )),
                       ),
                     ],
                   ),
@@ -472,5 +524,4 @@ class ProfileWidget extends StatelessWidget {
       ]),
     );
   }
-
 }

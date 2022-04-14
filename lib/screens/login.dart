@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:proyecto_ui/controllers/authentication_controller.dart';
 import 'package:proyecto_ui/main.dart';
+import 'package:proyecto_ui/screens/content_page.dart';
 import 'package:proyecto_ui/screens/home.dart';
 import 'package:proyecto_ui/screens/register.dart';
 
@@ -13,10 +16,13 @@ class LoginWidget extends StatelessWidget {
   final correoController = TextEditingController();
   final passController = TextEditingController();
 
+  AuthenticationController authenticationController = Get.find();
+
   void click() {}
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       body: SingleChildScrollView(
           child: Container(
@@ -184,15 +190,33 @@ class LoginWidget extends StatelessWidget {
   void openHomeScreen(BuildContext context) {
     String email = correoController.text;
     String pass = passController.text;
-    bool emailValid = RegExp(
-            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-        .hasMatch(email);
+    bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
     if (emailValid && pass.length > 5) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) => const MyHomePage(title: "MyApp")),
-      );
+
+      authenticationController.login(email, pass).then((value) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ContentPage()),
+        );
+      });
+
+      /*authenticationController.registerUser(name, email, pass)
+      .then((value) => {
+        if(value == "true"){
+          authenticationController.login(email, pass)
+        }else{
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text("Sign up Error"),
+          ))
+        }
+      }
+      ).catchError((e) => {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(e.toString()),
+        ))
+      });*/
+
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Invalid Email or Password"),

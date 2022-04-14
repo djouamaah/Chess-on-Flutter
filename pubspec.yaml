@@ -36,6 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.0.3
   flutter_chess_board: ^1.0.1
+  firebase_core: ^1.14.0
+  firebase_auth: ^3.3.13
+  get: ^4.6.1
+  cloud_functions: ^3.2.11
 
 dev_dependencies:
   flutter_test:
