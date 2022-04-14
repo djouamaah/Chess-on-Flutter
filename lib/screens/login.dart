@@ -110,6 +110,9 @@ class LoginWidget extends StatelessWidget {
                 height: 56,
                 child: TextField(
                   controller: passController,
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
                   decoration: const InputDecoration(
                       suffix: Icon(
                         Icons.visibility,
