@@ -52,7 +52,10 @@ class AuthenticationController extends GetxController {
         'name': name,
       });
       print("Created user : ${resp.data}");
+      //final Map<String, dynamic> data = Map.from(resp.data);
       return Future.value(resp.data);
+      //final Map<String, dynamic> data = Map.from(message['resp.data']);
+      //final Map<String, String> data = Map.from(message['resp.data']);
     }catch (e){
       return Future.error('error');
     } 
