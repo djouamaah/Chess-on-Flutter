@@ -103,93 +103,95 @@ class _SettingsWidgetState extends State<SettingsWidget> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-          body: Container(
-        decoration: BoxDecoration(
-          color: Color.fromRGBO(236, 241, 247, 1),
-        ),
-        child: Column(
-          children: [
-            Expanded(
-                child: Column(
-              children: [
-                Row(
-                  children: [
-                    Column(
-                      children: [
-                        Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 40, vertical: 5),
-                        ),
-                        Container(
-                          width: 48,
-                          height: 48,
-                          child: IconButton(
-                            icon: Icon(Icons.arrow_back_ios),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 0),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
+          body: SafeArea(
+            child: Container(
+                  decoration: BoxDecoration(
+            color: Color.fromRGBO(236, 241, 247, 1),
+                  ),
+                  child: Column(
+            children: [
+              Expanded(
+                  child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsets.symmetric(horizontal: 40, vertical: 5),
                           ),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Color.fromRGBO(73, 69, 79, 1),
-                              width: 1,
+                          Container(
+                            width: 48,
+                            height: 48,
+                            child: IconButton(
+                              icon: Icon(Icons.arrow_back_ios),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 0),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
                             ),
-                            borderRadius:
-                                BorderRadius.all(Radius.elliptical(48, 48)),
-                          ),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-                          alignment: AlignmentDirectional.center,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Text(
-                                'Configuración',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    color: Color.fromRGBO(29, 25, 43, 1),
-                                    fontFamily: 'Inter',
-                                    fontSize: 32,
-                                    letterSpacing: -1,
-                                    fontWeight: FontWeight.bold,
-                                    height: 1.3125),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Color.fromRGBO(73, 69, 79, 1),
+                                width: 1,
                               ),
-                            ],
+                              borderRadius:
+                                  BorderRadius.all(Radius.elliptical(48, 48)),
+                            ),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            padding:
+                                EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                            alignment: AlignmentDirectional.center,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                Text(
+                                  'Configuración',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(29, 25, 43, 1),
+                                      fontFamily: 'Inter',
+                                      fontSize: 32,
+                                      letterSpacing: -1,
+                                      fontWeight: FontWeight.bold,
+                                      height: 1.3125),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    )
-                  ],
+                        ],
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                          child: Column(
+                        children: [
+                          box_info(
+                              notificaciones,
+                              IconButton(
+                                icon: Icon(Icons.notifications),
+                                color: Color.fromRGBO(80, 87, 254, 1),
+                                padding: const EdgeInsets.all(0.0),
+                                onPressed: () {},
+                              )),
+                        ],
+                      ))
+                    ],
+                  ),
+                ],
+              ))
+            ],
+                  ),
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                        child: Column(
-                      children: [
-                        box_info(
-                            notificaciones,
-                            IconButton(
-                              icon: Icon(Icons.notifications),
-                              color: Color.fromRGBO(80, 87, 254, 1),
-                              padding: const EdgeInsets.all(0.0),
-                              onPressed: () {},
-                            )),
-                      ],
-                    ))
-                  ],
-                ),
-              ],
-            ))
-          ],
-        ),
-      ));
+          ));
   }
 }

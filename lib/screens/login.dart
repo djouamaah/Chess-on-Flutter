@@ -24,166 +24,168 @@ class LoginWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return Scaffold(
-      body: SingleChildScrollView(
-          child: Container(
-        width: MediaQuery.of(context).size.width - 10,
-        height: MediaQuery.of(context).size.height,
-        //decoration: const BoxDecoration(color: _colorNeutral),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(
-              height: 30,
-            ),
-            const Text(
-              "Iniciar Sesión",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Container(
-                width: 348,
-                height: 56,
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(12)),
-                    color: Colors.white),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const <Widget>[
-                    Image(
-                      image: AssetImage('assets/images/google_logo.png'),
-                      height: 35.0,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10),
-                      child: Text(
-                        'Inicia sesión con Google',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: _colorSecondary,
-                          fontWeight: FontWeight.w400,
-                        ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+            child: Container(
+          width: MediaQuery.of(context).size.width - 10,
+          height: MediaQuery.of(context).size.height,
+          //decoration: const BoxDecoration(color: _colorNeutral),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(
+                height: 30,
+              ),
+              const Text(
+                "Iniciar Sesión",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Container(
+                  width: 348,
+                  height: 56,
+                  decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      color: Colors.white),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      Image(
+                        image: AssetImage('assets/images/google_logo.png'),
+                        height: 35.0,
                       ),
-                    )
-                  ],
-                )),
-            const SizedBox(
-              height: 16,
-            ),
-            const Text(
-              "O usa",
-              style: TextStyle(
-                  color: _colorSecondary,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Container(
-              width: 343,
-              height: 56,
-              child: TextField(
-                controller: correoController,
-                decoration: const InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    labelText: "Correo",
-                    labelStyle: TextStyle(color: _colorBSecondary),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: _colorBSecondary),
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
-                    )),
+                      Padding(
+                        padding: EdgeInsets.only(left: 10),
+                        child: Text(
+                          'Inicia sesión con Google',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: _colorSecondary,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      )
+                    ],
+                  )),
+              const SizedBox(
+                height: 16,
               ),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Container(
-              width: 343,
-              height: 56,
-              child: TextField(
-                controller: passController,
-                decoration: const InputDecoration(
-                    suffix: Icon(
-                      Icons.visibility,
-                      color: _colorBSecondary,
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    labelText: "Contraseña",
-                    labelStyle: TextStyle(color: _colorBSecondary),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: _colorBSecondary),
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
-                    )),
+              const Text(
+                "O usa",
+                style: TextStyle(
+                    color: _colorSecondary,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500),
               ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.fromLTRB(20, 0, 30, 0),
-              child: TextButton(
-                onPressed: click,
-                child: const Text("¿Olvidaste tu contraseña?",
-                    style: TextStyle(
-                        color: _colorSecondary,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500)),
+              const SizedBox(
+                height: 16,
               ),
-            ),
-            GestureDetector(
-              child: Container(
-                alignment: Alignment.center,
+              Container(
                 width: 343,
                 height: 56,
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(12)),
-                    color: _colorPrimary),
-                child: const Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: Text(
-                    'Iniciar sesión',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500),
-                  ),
+                child: TextField(
+                  controller: correoController,
+                  decoration: const InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      labelText: "Correo",
+                      labelStyle: TextStyle(color: _colorBSecondary),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: _colorBSecondary),
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                      )),
                 ),
               ),
-              onTap: () => openHomeScreen(context),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => RegisterWidget()),
-                    );
-                  },
-                  child: const Text('Registrarse',
+              const SizedBox(
+                height: 16,
+              ),
+              Container(
+                width: 343,
+                height: 56,
+                child: TextField(
+                  controller: passController,
+                  decoration: const InputDecoration(
+                      suffix: Icon(
+                        Icons.visibility,
+                        color: _colorBSecondary,
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      labelText: "Contraseña",
+                      labelStyle: TextStyle(color: _colorBSecondary),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: _colorBSecondary),
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                      )),
+                ),
+              ),
+              Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.fromLTRB(20, 0, 30, 0),
+                child: TextButton(
+                  onPressed: click,
+                  child: const Text("¿Olvidaste tu contraseña?",
                       style: TextStyle(
                           color: _colorSecondary,
                           fontSize: 16,
                           fontWeight: FontWeight.w500)),
-                )
-              ],
-            ),
-          ],
-        ),
-      )),
+                ),
+              ),
+              GestureDetector(
+                child: Container(
+                  alignment: Alignment.center,
+                  width: 343,
+                  height: 56,
+                  decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      color: _colorPrimary),
+                  child: const Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Text(
+                      'Iniciar sesión',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ),
+                onTap: () => openHomeScreen(context),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => RegisterWidget()),
+                      );
+                    },
+                    child: const Text('Registrarse',
+                        style: TextStyle(
+                            color: _colorSecondary,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500)),
+                  )
+                ],
+              ),
+            ],
+          ),
+        )),
+      ),
     );
   }
 
