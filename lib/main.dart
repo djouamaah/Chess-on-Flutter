@@ -42,27 +42,29 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       
-      home: Scaffold(
-            body: FutureBuilder(
-                future: _init,
-                builder: (context, snapshot) {
-                  if (snapshot.hasError) {
-                    return const Wrong();
-                  }
-
-                  if (snapshot.connectionState == ConnectionState.done) {
-
-                    if(FirebaseAuth.instance.currentUser != null){
-                      return ContentPage();
-                    }else {
-                      return LoginWidget();
+      home: SafeArea(
+        child: Scaffold(
+              body: FutureBuilder(
+                  future: _init,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return const Wrong();
                     }
-
-                    //return const FirebaseCentral();
-                  }
-
-                  return const Loading();
-                }))
+      
+                    if (snapshot.connectionState == ConnectionState.done) {
+      
+                      if(FirebaseAuth.instance.currentUser != null){
+                        return ContentPage();
+                      }else {
+                        return LoginWidget();
+                      }
+      
+                      //return const FirebaseCentral();
+                    }
+      
+                    return const Loading();
+                  })),
+      )
 
     );
   }
