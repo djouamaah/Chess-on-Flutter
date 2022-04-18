@@ -15,6 +15,7 @@ import 'package:proyecto_ui/screens/blog.dart';
 
 import 'controllers/authentication_controller.dart';
 import 'controllers/controller.dart';
+import 'controllers/location_controller.dart';
 import 'firebase_options.dart';
 
 void main() {
@@ -27,46 +28,42 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    
     Get.put(AuthenticationController());
     Get.put(Controller());
+    Get.put(LocationController());
 
     final Future<FirebaseApp> _init = Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
 
     return GetMaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      
-      home: SafeArea(
-        child: Scaffold(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: SafeArea(
+          child: Scaffold(
               body: FutureBuilder(
                   future: _init,
                   builder: (context, snapshot) {
                     if (snapshot.hasError) {
                       return const Wrong();
                     }
-      
+
                     if (snapshot.connectionState == ConnectionState.done) {
-      
-                      if(FirebaseAuth.instance.currentUser != null){
+                      if (FirebaseAuth.instance.currentUser != null) {
                         return ContentPage();
-                      }else {
+                      } else {
                         return LoginWidget();
                       }
-      
+
                       //return const FirebaseCentral();
                     }
-      
+
                     return const Loading();
                   })),
-      )
-
-    );
+        ));
   }
 }
 

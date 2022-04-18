@@ -11,6 +11,7 @@ import 'package:proyecto_ui/screens/mis_cursos.dart';
 import 'package:proyecto_ui/screens/profile.dart';
 import 'package:proyecto_ui/screens/play.dart';
 import 'package:proyecto_ui/screens/blog.dart';
+import 'package:proyecto_ui/screens/location.dart';
 
 class ContentPage extends StatelessWidget {
   static const _colorPrimary = Color(0xFF4E55F7);
@@ -25,7 +26,7 @@ class ContentPage extends StatelessWidget {
     HomeTeacherWidget(),
     const AnalysisBoard(),
     BlogWidget(),
-    ProfileWidget()
+    ProfileWidget(),
   ];
 
   void onTabTapped(int index) {
@@ -34,8 +35,8 @@ class ContentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() =>
-      Scaffold(
+    return Obx(
+      () => Scaffold(
         body: Column(
           children: <Widget>[Expanded(child: _children[c.getNavIndex])],
         ),
