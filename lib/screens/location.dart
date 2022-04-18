@@ -12,8 +12,8 @@ class LocationApp extends StatelessWidget {
   Widget build(BuildContext context) {
     LocationController controller = Get.find();
     return Column(children: [
-      MaterialButton(onPressed: controller.updateLocation),
-      Text(controller.location.toString())
+      MaterialButton(onPressed: controller.updateLocation, color: Colors.amber),
+      Text(controller.location.value)
     ]);
   }
 }
