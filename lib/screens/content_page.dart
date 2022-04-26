@@ -35,34 +35,36 @@ class ContentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => Scaffold(
-        body: Column(
-          children: <Widget>[Expanded(child: _children[c.getNavIndex])],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: _colorPrimary,
-          onTap: onTabTapped,
-          currentIndex: c.getNavIndex,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Inicio',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.play_arrow),
-              label: 'Jugar',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.article),
-              label: 'Blog',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Perfil',
-            ),
-          ],
+    return SafeArea(
+      child: Obx(
+        () => Scaffold(
+          body: Column(
+            children: <Widget>[Expanded(child: _children[c.getNavIndex])],
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: _colorPrimary,
+            onTap: onTabTapped,
+            currentIndex: c.getNavIndex,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Inicio',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.play_arrow),
+                label: 'Jugar',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.article),
+                label: 'Blog',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Perfil',
+              ),
+            ],
+          ),
         ),
       ),
     );
