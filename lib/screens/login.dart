@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:proyecto_ui/controllers/authentication_controller.dart';
 import 'package:proyecto_ui/main.dart';
 import 'package:proyecto_ui/screens/content_page.dart';
-import 'package:proyecto_ui/screens/home.dart';
+import 'package:proyecto_ui/screens/home_teacher.dart';
 import 'package:proyecto_ui/screens/register.dart';
 
 class LoginWidget extends StatelessWidget {

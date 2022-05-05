@@ -5,8 +5,8 @@ import 'package:proyecto_ui/controllers/controller.dart';
 import 'package:proyecto_ui/firebase_cental.dart';
 import 'package:proyecto_ui/screens/login.dart';
 import 'package:proyecto_ui/screens/register.dart';
-import 'package:proyecto_ui/screens/home.dart';
 import 'package:proyecto_ui/screens/home_teacher.dart';
+import 'package:proyecto_ui/screens/home_student.dart';
 import 'package:proyecto_ui/screens/mis_cursos.dart';
 import 'package:proyecto_ui/screens/profile.dart';
 import 'package:proyecto_ui/screens/play.dart';
@@ -23,6 +23,7 @@ class ContentPage extends StatelessWidget {
   final Controller c = Get.put(Controller());
 
   final List _children = [
+    //HomeStudentWidget(),
     HomeTeacherWidget(),
     const AnalysisBoard(),
     BlogWidget(),

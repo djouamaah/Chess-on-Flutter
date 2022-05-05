@@ -55,5 +55,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: '844411702596',
     projectId: 'chess-flutter',
     storageBucket: 'chess-flutter.appspot.com',
+    databaseURL: 'https://chess-flutter-default-rtdb.firebaseio.com'
   );
 }

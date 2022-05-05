@@ -1,12 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:proyecto_ui/controllers/authentication_controller.dart';
+import 'package:proyecto_ui/controllers/firebase_controller.dart';
 import '../models/curso.dart';
 
 class HomeTeacherWidget extends StatelessWidget {
 
-  AuthenticationController authenticationController = Get.find();
+  FirebaseController firebaseController = Get.find();
 
   List<Curso> entries = <Curso>[
     Curso(0, 'Ajedrez para principiantes', '3 h 30 min',
@@ -17,6 +16,7 @@ class HomeTeacherWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    firebaseController.getCoursesListByTeacherId("0");
     return Container(
       decoration: const BoxDecoration(
         color: Color.fromRGBO(236, 241, 247, 1),
@@ -32,8 +32,8 @@ class HomeTeacherWidget extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
+                    children: const [
+                      Text(
                         'Hola',
                         textAlign: TextAlign.left,
                         style: TextStyle(
@@ -45,10 +45,9 @@ class HomeTeacherWidget extends StatelessWidget {
                             height: 1.3),
                       ),
                       Text(
-                        //'John Doe',
-                        authenticationController.getUserDisplayName(),
+                        'John Doe',
                         textAlign: TextAlign.left,
-                        style: const TextStyle(
+                        style: TextStyle(
                             color: Color.fromRGBO(73, 69, 79, 1),
                             fontFamily: 'Inter',
                             fontSize: 26,
@@ -133,256 +132,209 @@ class HomeTeacherWidget extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        Row(children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                padding: const EdgeInsets.all(12.0),
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(16),
-                    topRight: Radius.circular(16),
-                    bottomLeft: Radius.circular(16),
-                    bottomRight: Radius.circular(16),
-                  ),
-                  color: const Color.fromRGBO(255, 255, 255, 1),
-                  border: Border.all(
-                    color: const Color.fromRGBO(73, 69, 79, 1),
-                    width: 1,
-                  ),
-                ),
-                child: Column(
-                  //mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    const Text(
-                      'Crea salas o cursos para tus estudiantes',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 0, 0, 0),
-                          fontFamily: 'Inter',
-                          fontSize: 22,
-                          letterSpacing: -0.5,
-                          fontWeight: FontWeight.bold,
-                          height: 1.3),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(right: 8.0),
-                      child: Text(
-                        'Ayuda a mejorar sus habilidades y técnicas',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            color: Color.fromRGBO(73, 69, 79, 1),
-                            fontFamily: 'Inter',
-                            fontSize: 15,
-                            letterSpacing: -0.5,
-                            fontWeight: FontWeight.normal,
-                            height: 1.3),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Container(
-                        padding: const EdgeInsets.only(left: 8.0, right: 12.0),
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(20),
-                          ),
-                          color: Color.fromRGBO(80, 87, 254, 1),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                              icon: const Icon(Icons.add),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 0, vertical: 0),
-                              color: const Color.fromARGB(255, 255, 255, 255),
-                              onPressed: () {},
-                            ),
-                            const Text(
-                              'Crear sala',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                  fontFamily: 'Inter',
-                                  fontSize: 15,
-                                  letterSpacing: -0.5,
-                                  fontWeight: FontWeight.normal,
-                                  height: 1.3),
-                            ),
-                          ],
-                        )),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ]),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
           child: Row(
-            children: const [
-              Expanded(
-                child: Text(
-                  'Salas creadas',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      fontFamily: 'Inter',
-                      fontSize: 16,
-                      letterSpacing: -0.5,
-                      fontWeight: FontWeight.bold,
-                      height: 1.3),
-                ),
-              ),
-              Text(
-                'Ver todo',
+            children: [
+              const Text(
+                'Cursos:',
                 textAlign: TextAlign.left,
                 style: TextStyle(
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: Color.fromRGBO(73, 69, 79, 1),
                     fontFamily: 'Inter',
                     fontSize: 15,
                     letterSpacing: -0.5,
                     fontWeight: FontWeight.normal,
                     height: 1.3),
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 10, right: 10),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    ),
+                    color: Color.fromRGBO(80, 87, 254, 1),
+                    
+                  ),
+                  child: const Text(
+                    'Todos',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontFamily: 'Inter',
+                        fontSize: 15,
+                        letterSpacing: -0.5,
+                        fontWeight: FontWeight.normal,
+                        height: 1.3),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 10, right: 10),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    ),
+                    color: Color.fromRGBO(80, 87, 254, 1),
+                    
+                  ),
+                  child: const Text(
+                    'Populares',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontFamily: 'Inter',
+                        fontSize: 15,
+                        letterSpacing: -0.5,
+                        fontWeight: FontWeight.normal,
+                        height: 1.3),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 10, right: 10),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    ),
+                    color: Color.fromRGBO(80, 87, 254, 1),
+                    
+                  ),
+                  child: const Text(
+                    'Últimos',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontFamily: 'Inter',
+                        fontSize: 15,
+                        letterSpacing: -0.5,
+                        fontWeight: FontWeight.normal,
+                        height: 1.3),
+                  ),
+                ),
+              )
             ],
           ),
         ),
-        Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Container(
-                    width: 70,
-                    height: 70,
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                        ),
-                        color: Color.fromRGBO(235, 238, 255, 1)),
-                    child: ClipOval(
-                      child: SizedBox.fromSize(
-                        size: const Size.fromRadius(18),
-                        child: Image.asset('assets/images/Ajedrez.png'),
-                      ),
-                    )),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'Ajedrez para principiantes',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontFamily: 'Inter',
-                              fontSize: 16,
-                              letterSpacing: -0.5,
-                              fontWeight: FontWeight.bold,
-                              height: 1.3),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          'Curso completo de Ajedrez',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontFamily: 'Inter',
-                              fontSize: 15,
-                              letterSpacing: -0.5,
-                              fontWeight: FontWeight.normal,
-                              height: 1.3),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            )),
-        const Padding(
-          padding: EdgeInsets.only(left: 20.0, right: 8.0),
-          child: Divider(color: Color.fromRGBO(73, 69, 79, 1)),
-        ),
-        Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Container(
-                    width: 70,
-                    height: 70,
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                        ),
-                        color: Color.fromRGBO(235, 238, 255, 1)),
-                    child: ClipOval(
-                      child: SizedBox.fromSize(
-                        size: const Size.fromRadius(18),
-                        child: Image.asset('assets/images/Ajedrez.png'),
-                      ),
-                    )),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'Ajedrez para principiantes',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontFamily: 'Inter',
-                              fontSize: 16,
-                              letterSpacing: -0.5,
-                              fontWeight: FontWeight.bold,
-                              height: 1.3),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          'Curso completo de Ajedrez',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontFamily: 'Inter',
-                              fontSize: 15,
-                              letterSpacing: -0.5,
-                              fontWeight: FontWeight.normal,
-                              height: 1.3),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            )),
-        const Padding(
-          padding: EdgeInsets.only(left: 20.0, right: 8.0),
-          child: Divider(color: Color.fromRGBO(73, 69, 79, 1)),
+        Expanded(
+          child: Obx(() =>
+            ListView.builder(
+                padding: const EdgeInsets.all(8),
+                itemCount: firebaseController.cursosList.length,
+                itemBuilder: (context, index) {
+                  return _row(firebaseController.cursosList[index], index);
+                }),
+          ),
         )
       ]),
     );
   }
 
+  Widget _row(Curso item, int index) {
+    return _card(item, index);
+  }
+
+  Widget _card(Curso item, int index) {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(16),
+                topRight: Radius.circular(16),
+                bottomLeft: Radius.circular(16),
+                bottomRight: Radius.circular(16),
+              ),
+              color: const Color.fromRGBO(255, 255, 255, 1),
+              border: Border.all(
+                color: const Color.fromRGBO(73, 69, 79, 1),
+                width: 1,
+              ),
+            ),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 200,
+                  child: Stack(fit: StackFit.expand, children: [
+                    Image.asset(
+                      'assets/images/Ajedrez.png',
+                      height: 200,
+                      fit: BoxFit.cover,
+                    ),
+                  ]),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: const [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          '3 h 30 min',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Color.fromRGBO(80, 87, 254, 1),
+                              fontFamily: 'Inter',
+                              fontSize: 15,
+                              letterSpacing: -0.5,
+                              fontWeight: FontWeight.bold,
+                              height: 1.3),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Ajedrez para principiantes',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontFamily: 'Inter',
+                              fontSize: 22,
+                              letterSpacing: -0.5,
+                              fontWeight: FontWeight.normal,
+                              height: 1.3),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Paso a paso para principiantes',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Color.fromRGBO(73, 69, 79, 1),
+                              fontFamily: 'Inter',
+                              fontSize: 15,
+                              letterSpacing: -0.5,
+                              fontWeight: FontWeight.normal,
+                              height: 1.3),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
