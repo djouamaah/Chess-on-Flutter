@@ -40,12 +40,12 @@ class FirebaseController extends GetxController{
 
         cursosList.clear();
         cursosList.addAll(cursos);
-        print("LLega aca 1");
+        //print("LLega aca 1");
         print(cursosList);
         return Future.value();
 
       } catch (error) {
-        print("LLega aca error: "+ error.toString());
+        //print("LLega aca error: "+ error.toString());
       return Future.error(error);
       }
   }

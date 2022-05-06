@@ -188,9 +188,9 @@ class RegisterWidget extends StatelessWidget {
         .hasMatch(email);
     if (emailValid && pass.length > 5 && name.isNotEmpty) {
       authenticationController.registerUser(name, email, pass).then((value) {
-        print("llega aca 1");
+        //print("llega aca 1");
         if (value == "true") {
-          print("llega aca 2");
+          //print("llega aca 2");
           authenticationController.login(email, pass).then((value) {
             Navigator.pushReplacement(
               context,
@@ -198,7 +198,7 @@ class RegisterWidget extends StatelessWidget {
             );
           });
         } else {
-          print("llega aca 3");
+          //print("llega aca 3");
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text("Sign up Error"),
           ));

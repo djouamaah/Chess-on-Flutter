@@ -23,8 +23,8 @@ class ContentPage extends StatelessWidget {
   final Controller c = Get.put(Controller());
 
   final List _children = [
-    //HomeStudentWidget(),
-    HomeTeacherWidget(),
+    HomeStudentWidget(),
+    //HomeTeacherWidget(),
     const AnalysisBoard(),
     BlogWidget(),
     LocationApp(),
