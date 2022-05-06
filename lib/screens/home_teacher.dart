@@ -19,95 +19,154 @@ class HomeTeacherWidget extends StatelessWidget {
     firebaseController.getCoursesListByTeacherId("0");
     return Container(
       decoration: const BoxDecoration(
-        color: Color.fromRGBO(236, 241, 247, 1),
+          color: Color.fromRGBO(236, 241, 247, 1),
       ),
-      child: Column(children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text(
-                        'Hola',
+      child: SingleChildScrollView(
+        child: Column(children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          'Hola',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Color.fromRGBO(73, 69, 79, 1),
+                              fontFamily: 'Inter',
+                              fontSize: 15,
+                              letterSpacing: -0.5,
+                              fontWeight: FontWeight.bold,
+                              height: 1.3),
+                        ),
+                        Text(
+                          'John Doe',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Color.fromRGBO(73, 69, 79, 1),
+                              fontFamily: 'Inter',
+                              fontSize: 26,
+                              letterSpacing: -0.5,
+                              fontWeight: FontWeight.bold,
+                              height: 1.3),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 48,
+                  height: 48,
+                  child: IconButton(
+                    icon: const Icon(Icons.notifications),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                    onPressed: () {},
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: const Color.fromRGBO(73, 69, 79, 1),
+                      width: 1,
+                    ),
+                    borderRadius:
+                        const BorderRadius.all(Radius.elliptical(48, 48)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Expanded(
+              child: Container(
+                padding: const EdgeInsets.all(12.0),
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16),
+                    bottomLeft: Radius.circular(16),
+                    bottomRight: Radius.circular(16),
+                  ),
+                  color: const Color.fromRGBO(255, 255, 255, 1),
+                  border: Border.all(
+                    color: const Color.fromRGBO(73, 69, 79, 1),
+                    width: 1,
+                  ),
+                ),
+                child: Row(
+                  //mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    const SizedBox(width: 20),
+                    const Expanded(
+                      child: Text(
+                        'Buscar dentro de tus cursos',
                         textAlign: TextAlign.left,
                         style: TextStyle(
                             color: Color.fromRGBO(73, 69, 79, 1),
                             fontFamily: 'Inter',
                             fontSize: 15,
                             letterSpacing: -0.5,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.normal,
                             height: 1.3),
                       ),
-                      Text(
-                        'John Doe',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            color: Color.fromRGBO(73, 69, 79, 1),
-                            fontFamily: 'Inter',
-                            fontSize: 26,
-                            letterSpacing: -0.5,
-                            fontWeight: FontWeight.bold,
-                            height: 1.3),
-                      ),
-                    ],
-                  ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Center(
+                          child: Image.asset(
+                        'assets/images/search.png',
+                        height: 20,
+                        width: 20,
+                      )),
+                    ),
+                  ],
                 ),
               ),
-              Container(
-                width: 48,
-                height: 48,
-                child: IconButton(
-                  icon: const Icon(Icons.notifications),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                  onPressed: () {},
-                ),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: const Color.fromRGBO(73, 69, 79, 1),
-                    width: 1,
-                  ),
-                  borderRadius:
-                      const BorderRadius.all(Radius.elliptical(48, 48)),
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Expanded(
-            child: Container(
-              padding: const EdgeInsets.all(12.0),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  topRight: Radius.circular(16),
-                  bottomLeft: Radius.circular(16),
-                  bottomRight: Radius.circular(16),
+          const SizedBox(
+            height: 10,
+          ),
+          /*Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+            child: Row(
+              children: [
+                const Text(
+                  'Cursos:',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                      color: Color.fromRGBO(73, 69, 79, 1),
+                      fontFamily: 'Inter',
+                      fontSize: 15,
+                      letterSpacing: -0.5,
+                      fontWeight: FontWeight.normal,
+                      height: 1.3),
                 ),
-                color: const Color.fromRGBO(255, 255, 255, 1),
-                border: Border.all(
-                  color: const Color.fromRGBO(73, 69, 79, 1),
-                  width: 1,
-                ),
-              ),
-              child: Row(
-                //mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  const SizedBox(width: 20),
-                  const Expanded(
-                    child: Text(
-                      'Buscar dentro de tus cursos',
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 10, right: 10),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20),
+                      ),
+                      color: Color.fromRGBO(80, 87, 254, 1),
+                      
+                    ),
+                    child: const Text(
+                      'Todos',
                       textAlign: TextAlign.left,
                       style: TextStyle(
-                          color: Color.fromRGBO(73, 69, 79, 1),
+                          color: Color.fromARGB(255, 255, 255, 255),
                           fontFamily: 'Inter',
                           fontSize: 15,
                           letterSpacing: -0.5,
@@ -115,133 +174,169 @@ class HomeTeacherWidget extends StatelessWidget {
                           height: 1.3),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Center(
-                        child: Image.asset(
-                      'assets/images/search.png',
-                      height: 20,
-                      width: 20,
-                    )),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 10, right: 10),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20),
+                      ),
+                      color: Color.fromRGBO(80, 87, 254, 1),
+                      
+                    ),
+                    child: const Text(
+                      'Populares',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontFamily: 'Inter',
+                          fontSize: 15,
+                          letterSpacing: -0.5,
+                          fontWeight: FontWeight.normal,
+                          height: 1.3),
+                    ),
                   ),
-                ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 10, right: 10),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20),
+                      ),
+                      color: Color.fromRGBO(80, 87, 254, 1),
+                      
+                    ),
+                    child: const Text(
+                      'Últimos',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontFamily: 'Inter',
+                          fontSize: 15,
+                          letterSpacing: -0.5,
+                          fontWeight: FontWeight.normal,
+                          height: 1.3),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),*/
+          Row(children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  padding: const EdgeInsets.all(12.0),
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(16),
+                      bottomLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16),
+                    ),
+                    color: const Color.fromRGBO(255, 255, 255, 1),
+                    border: Border.all(
+                      color: const Color.fromRGBO(73, 69, 79, 1),
+                      width: 1,
+                    ),
+                  ),
+                  child: Column(
+                    //mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      const Text(
+                        'Crea cursos para tus estudiantes',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            fontFamily: 'Inter',
+                            fontSize: 20,
+                            letterSpacing: -0.5,
+                            fontWeight: FontWeight.bold,
+                            height: 1.3),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(right: 8.0),
+                        child: Text(
+                          'Ayuda a mejorar sus habilidades y técnicas',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Color.fromRGBO(73, 69, 79, 1),
+                              fontFamily: 'Inter',
+                              fontSize: 15,
+                              letterSpacing: -0.5,
+                              fontWeight: FontWeight.normal,
+                              height: 1.3),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                          padding: const EdgeInsets.only(left: 8.0, right: 12.0),
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20),
+                              bottomLeft: Radius.circular(20),
+                              bottomRight: Radius.circular(20),
+                            ),
+                            color: Color.fromRGBO(80, 87, 254, 1),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.add),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 0, vertical: 0),
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                                onPressed: () {},
+                              ),
+                              const Text(
+                                'Crear curso',
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 255, 255, 255),
+                                    fontFamily: 'Inter',
+                                    fontSize: 15,
+                                    letterSpacing: -0.5,
+                                    fontWeight: FontWeight.normal,
+                                    height: 1.3),
+                              ),
+                            ],
+                          )),
+                    ],
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-          child: Row(
-            children: [
-              const Text(
-                'Cursos:',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                    color: Color.fromRGBO(73, 69, 79, 1),
-                    fontFamily: 'Inter',
-                    fontSize: 15,
-                    letterSpacing: -0.5,
-                    fontWeight: FontWeight.normal,
-                    height: 1.3),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 10, right: 10),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
-                    ),
-                    color: Color.fromRGBO(80, 87, 254, 1),
-                    
-                  ),
-                  child: const Text(
-                    'Todos',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontFamily: 'Inter',
-                        fontSize: 15,
-                        letterSpacing: -0.5,
-                        fontWeight: FontWeight.normal,
-                        height: 1.3),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 10, right: 10),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
-                    ),
-                    color: Color.fromRGBO(80, 87, 254, 1),
-                    
-                  ),
-                  child: const Text(
-                    'Populares',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontFamily: 'Inter',
-                        fontSize: 15,
-                        letterSpacing: -0.5,
-                        fontWeight: FontWeight.normal,
-                        height: 1.3),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 10, right: 10),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
-                    ),
-                    color: Color.fromRGBO(80, 87, 254, 1),
-                    
-                  ),
-                  child: const Text(
-                    'Últimos',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontFamily: 'Inter',
-                        fontSize: 15,
-                        letterSpacing: -0.5,
-                        fontWeight: FontWeight.normal,
-                        height: 1.3),
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-        Expanded(
-          child: Obx(() =>
+          ]),
+          Obx(() =>
             ListView.builder(
-                padding: const EdgeInsets.all(8),
-                itemCount: firebaseController.cursosList.length,
-                itemBuilder: (context, index) {
-                  return _row(firebaseController.cursosList[index], index);
-                }),
-          ),
-        )
-      ]),
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(8),
+              itemCount: firebaseController.cursosList.length,
+              itemBuilder: (context, index) {
+                return _row(firebaseController.cursosList[index], index);
+              }),
+          )
+        ]),
+      ),
     );
   }
 

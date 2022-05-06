@@ -28,7 +28,7 @@ class FirebaseController extends GetxController{
         final snapshot = await databaseRef.child('cursos').get();
         List<Curso> cursos = [];
 
-        snapshot.children.forEach((element) {
+        for (var element in snapshot.children) {
 
           Curso curso = Curso(0,
           element.child('name').value as String,
@@ -36,7 +36,7 @@ class FirebaseController extends GetxController{
           element.child('desc').value as String);
 
           cursos.add(curso);
-        });
+        }
 
         cursosList.clear();
         cursosList.addAll(cursos);
