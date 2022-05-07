@@ -26,6 +26,7 @@ class _AddCourseWidgetState extends State<AddCourseWidget> {
 
   final tituloController = TextEditingController();
   final descController = TextEditingController();
+  final duracionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +98,7 @@ class _AddCourseWidgetState extends State<AddCourseWidget> {
                                                   color: Color.fromRGBO(
                                                       29, 25, 43, 1),
                                                   fontFamily: 'Inter',
-                                                  fontSize: 28,
+                                                  fontSize: 26,
                                                   letterSpacing: -1,
                                                   fontWeight: FontWeight.bold,
                                                   height: 1.3125),
@@ -163,6 +164,32 @@ class _AddCourseWidgetState extends State<AddCourseWidget> {
                                         filled: true,
                                         fillColor: Colors.white,
                                         labelText: "Descripción",
+                                        labelStyle:
+                                            TextStyle(color: _colorBSecondary),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: _colorBSecondary),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(12)),
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(12)),
+                                        )),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 16,
+                                ),
+                                SizedBox(
+                                  width: 343,
+                                  height: 56,
+                                  child: TextField(
+                                    controller: duracionController,
+                                    decoration: const InputDecoration(
+                                        filled: true,
+                                        fillColor: Colors.white,
+                                        labelText: "Duración",
                                         labelStyle:
                                             TextStyle(color: _colorBSecondary),
                                         focusedBorder: OutlineInputBorder(
@@ -254,6 +281,7 @@ class _AddCourseWidgetState extends State<AddCourseWidget> {
   void publicarCurso() {
     String titulo = tituloController.text;
     String desc = descController.text;
+    String duracion = duracionController.text;
     String room = "principiantes";
     String teacherId = authenticationController.getCurrentUserId();
 
@@ -263,9 +291,9 @@ class _AddCourseWidgetState extends State<AddCourseWidget> {
       room = 'expertos';
     }
 
-    if(titulo.isNotEmpty && desc.isNotEmpty){
+    if(titulo.isNotEmpty && desc.isNotEmpty && duracion.isNotEmpty) {
 
-      Map<String, String> curso = {'name': titulo, 'desc': desc, 'room': room, 'teacher_id': teacherId};
+      Map<String, String> curso = {'name': titulo, 'desc': desc, 'room': room, 'teacher_id': teacherId, 'time': duracion};
 
       firebaseController.addCourse(curso).then((value) {
         Navigator.pop(context);
