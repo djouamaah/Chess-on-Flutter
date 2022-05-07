@@ -1,9 +1,37 @@
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
 
+enum SingingCharacter {student, teacher}
+
 class AuthenticationController extends GetxController {
-  
+
+  final databaseRef = FirebaseDatabase.instance.ref();
+
+  final Rx<SingingCharacter?> _role = SingingCharacter.student.obs;
+  RxString userName = "".obs;
+
+  void updateRole(SingingCharacter? value){
+    _role.value = value;
+  }
+
+  SingingCharacter? getRole(){
+    return _role.value;
+  }
+
+  Future<void> getUserName() async{
+    try {
+      String uid = FirebaseAuth.instance.currentUser!.uid;
+      DataSnapshot snapshot = await databaseRef.child('usuarios').child(uid).child('name').get();
+      userName.value = snapshot.value as String;
+      print(userName.value);
+      return Future.value();
+    } catch (error) {
+      return Future.error(error);
+    }
+  }
+
   Future<void> login(String email, String password) async {
     try {
       await FirebaseAuth.instance
@@ -43,13 +71,14 @@ class AuthenticationController extends GetxController {
     }
   }
 
-  Future<String> registerUser(String name, String email, String password) async {
+  Future<String> registerUser(String name, String email, String password, String role) async {
     HttpsCallable callable = FirebaseFunctions.instance.httpsCallable('registerUser');
     try {
       final resp = await callable.call(<String, dynamic>{
         'email': email,
         'pass': password,
         'name': name,
+        'role': role,
       });
       print("Created user : ${resp.data}");
       //final Map<String, dynamic> data = Map.from(resp.data);
@@ -71,4 +100,15 @@ class AuthenticationController extends GetxController {
     
   }
 
+  Future<void> crearUsuarioDB(String name, String email, String role) async {
+      try {
+        String uid = FirebaseAuth.instance.currentUser!.uid;
+        await databaseRef.child('usuarios').child(uid).set({'uid': uid, 'name': name, 'email': email, 'role': role});
+        return Future.value();
+      } catch (error) {
+      return Future.error(error);
+      }
+  }
+
 }
+

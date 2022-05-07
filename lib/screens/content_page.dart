@@ -28,6 +28,7 @@ class ContentPage extends StatelessWidget {
     const AnalysisBoard(),
     BlogWidget(),
     LocationApp(),
+    //ProfileWidget()
   ];
 
   void onTabTapped(int index) {

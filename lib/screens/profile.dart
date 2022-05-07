@@ -11,7 +11,9 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Figma Flutter Generator ProfileWidget - FRAME
+    
+    authenticationController.getUserName();
+
     return Container(
       decoration: const BoxDecoration(
         color: Color.fromRGBO(236, 241, 247, 1),
@@ -79,16 +81,18 @@ class ProfileWidget extends StatelessWidget {
                           ),
                           Flexible(
                             flex: 1,
-                            child: Text(
-                              authenticationController.getUserDisplayName(),
-                              textAlign: TextAlign.left,
-                              style: const TextStyle(
-                                  color: Color.fromRGBO(29, 25, 43, 1),
-                                  fontFamily: 'Inter',
-                                  fontSize: 18,
-                                  letterSpacing: 0,
-                                  fontWeight: FontWeight.bold,
-                                  height: 1.5),
+                            child: Obx(() =>
+                              Text(
+                                authenticationController.userName.value,
+                                textAlign: TextAlign.left,
+                                style: const TextStyle(
+                                    color: Color.fromRGBO(29, 25, 43, 1),
+                                    fontFamily: 'Inter',
+                                    fontSize: 18,
+                                    letterSpacing: 0,
+                                    fontWeight: FontWeight.bold,
+                                    height: 1.5),
+                              ),
                             ),
                           ),
                         ],
