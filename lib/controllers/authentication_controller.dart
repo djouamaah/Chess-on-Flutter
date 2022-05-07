@@ -10,7 +10,10 @@ class AuthenticationController extends GetxController {
   final databaseRef = FirebaseDatabase.instance.ref();
 
   final Rx<SingingCharacter?> _role = SingingCharacter.student.obs;
-  RxString userName = "".obs;
+  String userName = "";
+  String userRole = "";
+
+  RxInt userInfoState = 0.obs;
 
   void updateRole(SingingCharacter? value){
     _role.value = value;
@@ -20,12 +23,14 @@ class AuthenticationController extends GetxController {
     return _role.value;
   }
 
-  Future<void> getUserName() async{
+  Future<void> getUserInfo() async{
     try {
       String uid = FirebaseAuth.instance.currentUser!.uid;
       DataSnapshot snapshot = await databaseRef.child('usuarios').child(uid).child('name').get();
-      userName.value = snapshot.value as String;
-      print(userName.value);
+      userName = snapshot.child('name').value as String;
+      userRole = snapshot.child('role').value as String;
+      userInfoState.value = 1;
+      //print(userName.value);
       return Future.value();
     } catch (error) {
       return Future.error(error);
@@ -104,6 +109,8 @@ class AuthenticationController extends GetxController {
       try {
         String uid = FirebaseAuth.instance.currentUser!.uid;
         await databaseRef.child('usuarios').child(uid).set({'uid': uid, 'name': name, 'email': email, 'role': role});
+        userName = name;
+        userRole = role;
         return Future.value();
       } catch (error) {
       return Future.error(error);

@@ -43,7 +43,7 @@ class HomeStudentWidget extends StatelessWidget {
                         ),
                         Text(
                           //'John Doe',
-                          authenticationController.getUserDisplayName(),
+                          authenticationController.userName,
                           textAlign: TextAlign.left,
                           style: const TextStyle(
                               color: Color.fromRGBO(73, 69, 79, 1),

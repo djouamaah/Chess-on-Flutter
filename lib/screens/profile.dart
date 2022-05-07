@@ -7,13 +7,11 @@ import 'package:proyecto_ui/screens/login.dart';
 import 'package:proyecto_ui/screens/mis_cursos.dart';
 
 class ProfileWidget extends StatelessWidget {
-  AuthenticationController authenticationController = Get.find();
+
+  final AuthenticationController authenticationController = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    
-    authenticationController.getUserName();
-
     return Container(
       decoration: const BoxDecoration(
         color: Color.fromRGBO(236, 241, 247, 1),
@@ -81,9 +79,8 @@ class ProfileWidget extends StatelessWidget {
                           ),
                           Flexible(
                             flex: 1,
-                            child: Obx(() =>
-                              Text(
-                                authenticationController.userName.value,
+                            child: Text(
+                                authenticationController.userName,
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(
                                     color: Color.fromRGBO(29, 25, 43, 1),
@@ -93,7 +90,6 @@ class ProfileWidget extends StatelessWidget {
                                     fontWeight: FontWeight.bold,
                                     height: 1.5),
                               ),
-                            ),
                           ),
                         ],
                       ),

@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:proyecto_ui/controllers/authentication_controller.dart';
 import 'package:proyecto_ui/controllers/controller.dart';
 import 'package:proyecto_ui/firebase_cental.dart';
 import 'package:proyecto_ui/screens/login.dart';
@@ -20,16 +21,8 @@ class ContentPage extends StatelessWidget {
   static const _colorBSecondary = Color(0xFF49454F);
   static const _colorNeutral = Color(0xFFECF1F7);
 
-  final Controller c = Get.put(Controller());
-
-  final List _children = [
-    HomeStudentWidget(),
-    //HomeTeacherWidget(),
-    const AnalysisBoard(),
-    BlogWidget(),
-    LocationApp(),
-    //ProfileWidget()
-  ];
+  final Controller c = Get.find();
+  final AuthenticationController authenticationController = Get.find();
 
   void onTabTapped(int index) {
     c.updateNavIndex(index);
@@ -37,6 +30,23 @@ class ContentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+final List _children = [
+    authenticationController.userRole == "teacher" ? HomeTeacherWidget() : HomeStudentWidget(),
+    //HomeTeacherWidget(),
+    const AnalysisBoard(),
+    BlogWidget(),
+    //const LocationApp(),
+    ProfileWidget()
+  ];
+
+  /*dynamic getHomePageByRole(){
+    if(authenticationController.userRole == "teacher"){
+      return HomeTeacherWidget();
+    }
+    return HomeStudentWidget();
+  }*/
+
     return SafeArea(
       child: Obx(
         () => Scaffold(

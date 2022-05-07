@@ -37,10 +37,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Get.put(AuthenticationController());
+    AuthenticationController authenticationController = Get.put(AuthenticationController());
     Get.put(Controller());
     Get.put(LocationController());
     Get.put(FirebaseController());
+
+    
 
     return GetMaterialApp(
         title: 'Flutter Demo',
@@ -49,7 +51,13 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: SafeArea(
-          child: Scaffold(body: ContentPage()),
+          child: Scaffold(body: Obx((){
+            if(authenticationController.userInfoState.value == 0){
+              authenticationController.getUserInfo();
+              return const Loading();
+            } 
+            return ContentPage();
+            })),
         ));
   }
 }
