@@ -8,7 +8,7 @@ import 'package:proyecto_ui/screens/login.dart';
 import 'package:proyecto_ui/screens/register.dart';
 import 'package:proyecto_ui/screens/home_teacher.dart';
 import 'package:proyecto_ui/screens/home_student.dart';
-import 'package:proyecto_ui/screens/mis_cursos.dart';
+import 'package:proyecto_ui/screens/my_courses.dart';
 import 'package:proyecto_ui/screens/profile.dart';
 import 'package:proyecto_ui/screens/play.dart';
 import 'package:proyecto_ui/screens/blog.dart';
@@ -31,21 +31,14 @@ class ContentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-final List _children = [
-    authenticationController.userRole == "teacher" ? HomeTeacherWidget() : HomeStudentWidget(),
-    //HomeTeacherWidget(),
-    const AnalysisBoard(),
-    BlogWidget(),
-    //const LocationApp(),
-    ProfileWidget()
-  ];
-
-  /*dynamic getHomePageByRole(){
-    if(authenticationController.userRole == "teacher"){
-      return HomeTeacherWidget();
-    }
-    return HomeStudentWidget();
-  }*/
+    final List _children = [
+      authenticationController.userRole == "teacher" ? HomeTeacherWidget() : HomeStudentWidget(),
+      //HomeTeacherWidget(),
+      const AnalysisBoard(),
+      BlogWidget(),
+      //const LocationApp(),
+      ProfileWidget()
+    ];
 
     return SafeArea(
       child: Obx(

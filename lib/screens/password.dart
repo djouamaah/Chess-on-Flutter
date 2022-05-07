@@ -173,7 +173,7 @@ class _PasswordWidgetState extends State<PasswordWidget> {
                                     MaterialButton(
                                       minWidth: 45,
                                       height: 60,
-                                      child: Text(
+                                      child: const Text(
                                         'Actualizar contraseña',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(

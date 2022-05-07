@@ -4,7 +4,7 @@ import 'package:proyecto_ui/controllers/authentication_controller.dart';
 import 'package:proyecto_ui/screens/account.dart';
 import 'package:proyecto_ui/screens/configuration.dart';
 import 'package:proyecto_ui/screens/login.dart';
-import 'package:proyecto_ui/screens/mis_cursos.dart';
+import 'package:proyecto_ui/screens/my_courses.dart';
 
 class ProfileWidget extends StatelessWidget {
 

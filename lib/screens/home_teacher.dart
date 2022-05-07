@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proyecto_ui/controllers/firebase_controller.dart';
+import 'package:proyecto_ui/screens/add_course.dart';
 import '../models/curso.dart';
 
 class HomeTeacherWidget extends StatelessWidget {
@@ -285,40 +286,48 @@ class HomeTeacherWidget extends StatelessWidget {
                       const SizedBox(
                         height: 15,
                       ),
-                      Container(
-                          padding: const EdgeInsets.only(left: 8.0, right: 12.0),
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20),
-                              bottomLeft: Radius.circular(20),
-                              bottomRight: Radius.circular(20),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => AddCourseWidget()),
+                          );
+                        },
+                        child: Container(
+                            padding: const EdgeInsets.only(left: 8.0, right: 12.0),
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20),
+                                bottomLeft: Radius.circular(20),
+                                bottomRight: Radius.circular(20),
+                              ),
+                              color: Color.fromRGBO(80, 87, 254, 1),
                             ),
-                            color: Color.fromRGBO(80, 87, 254, 1),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              IconButton(
-                                icon: const Icon(Icons.add),
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 0, vertical: 0),
-                                color: const Color.fromARGB(255, 255, 255, 255),
-                                onPressed: () {},
-                              ),
-                              const Text(
-                                'Crear curso',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 255, 255, 255),
-                                    fontFamily: 'Inter',
-                                    fontSize: 15,
-                                    letterSpacing: -0.5,
-                                    fontWeight: FontWeight.normal,
-                                    height: 1.3),
-                              ),
-                            ],
-                          )),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                IconButton(
+                                  icon: const Icon(Icons.add),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 0, vertical: 0),
+                                  color: const Color.fromARGB(255, 255, 255, 255),
+                                  onPressed: () {},
+                                ),
+                                const Text(
+                                  'Crear curso',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 255, 255, 255),
+                                      fontFamily: 'Inter',
+                                      fontSize: 15,
+                                      letterSpacing: -0.5,
+                                      fontWeight: FontWeight.normal,
+                                      height: 1.3),
+                                ),
+                              ],
+                            )),
+                      ),
                     ],
                   ),
                 ),

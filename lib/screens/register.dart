@@ -251,7 +251,7 @@ class RegisterWidget extends StatelessWidget {
       });*/
 
     authenticationController.signup(email, pass).then((value) {
-      authenticationController.crearUsuarioDB(name, email, authenticationController.getRole().toString()).then((value){
+      authenticationController.crearUsuarioDB(name, email, authenticationController.getRole().toString().split('.').last).then((value){
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => ContentPage()),

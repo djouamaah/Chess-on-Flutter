@@ -26,9 +26,10 @@ class AuthenticationController extends GetxController {
   Future<void> getUserInfo() async{
     try {
       String uid = FirebaseAuth.instance.currentUser!.uid;
-      DataSnapshot snapshot = await databaseRef.child('usuarios').child(uid).child('name').get();
+      DataSnapshot snapshot = await databaseRef.child('usuarios').child(uid).get();
       userName = snapshot.child('name').value as String;
       userRole = snapshot.child('role').value as String;
+      print('userRole: ' +userRole);
       userInfoState.value = 1;
       //print(userName.value);
       return Future.value();
