@@ -32,7 +32,7 @@ class FirebaseController extends GetxController{
 
           Curso curso = Curso(0,
           element.child('name').value as String,
-          element.child('time').value as String,
+          element.child('time').value != null ? element.child('time').value as String : "",
           element.child('desc').value as String);
 
           cursos.add(curso);
@@ -40,12 +40,28 @@ class FirebaseController extends GetxController{
 
         cursosList.clear();
         cursosList.addAll(cursos);
-        //print("LLega aca 1");
         print(cursosList);
         return Future.value();
 
       } catch (error) {
         //print("LLega aca error: "+ error.toString());
+      return Future.error(error);
+      }
+  }
+
+  Future<void> addCourse(Map<String, dynamic> curso) async{
+    print("LLega 1");
+      try {
+        //final snapshot = await databaseRef.child('cursos').orderByChild("teacher_id").equalTo(id).get();
+
+        //Map<String, String> curso = {'titulo': titulo, 'desc': desc, 'room': room};
+
+        await databaseRef.child('cursos').push().set(curso);
+        print('Publicar curso: Exitoso');
+        return Future.value();
+
+      } catch (error) {
+      print("LLega aca error: "+ error.toString());
       return Future.error(error);
       }
   }

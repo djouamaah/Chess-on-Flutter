@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:proyecto_ui/controllers/authentication_controller.dart';
+import 'package:proyecto_ui/controllers/firebase_controller.dart';
 import 'account.dart';
 
 //void main() => runApp(PasswordWidget());
@@ -9,6 +12,10 @@ class AddCourseWidget extends StatefulWidget {
 }
 
 class _AddCourseWidgetState extends State<AddCourseWidget> {
+
+  final FirebaseController firebaseController = Get.find();
+  final AuthenticationController authenticationController = Get.find();
+
   static const _colorPrimary = Color(0xFF4E55F7);
   //static const _colorBPrimary = Color(0xFFEBEEFF);
   static const _colorSecondary = Color(0xFF1D192B);
@@ -16,6 +23,9 @@ class _AddCourseWidgetState extends State<AddCourseWidget> {
   static const _colorNeutral = Color.fromARGB(255, 255, 255, 255);
 
   String dropdownValue = 'Sala Principiantes';
+
+  final tituloController = TextEditingController();
+  final descController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -118,12 +128,12 @@ class _AddCourseWidgetState extends State<AddCourseWidget> {
                                 const SizedBox(
                                   height: 20,
                                 ),
-                                const SizedBox(
+                                SizedBox(
                                   width: 343,
                                   height: 56,
                                   child: TextField(
-                                    //controller: correoController,
-                                    decoration: InputDecoration(
+                                    controller: tituloController,
+                                    decoration: const InputDecoration(
                                         filled: true,
                                         fillColor: Colors.white,
                                         labelText: "Titulo",
@@ -144,12 +154,12 @@ class _AddCourseWidgetState extends State<AddCourseWidget> {
                                 const SizedBox(
                                   height: 16,
                                 ),
-                                const SizedBox(
+                                SizedBox(
                                   width: 343,
                                   height: 56,
                                   child: TextField(
-                                    //controller: correoController,
-                                    decoration: InputDecoration(
+                                    controller: descController,
+                                    decoration: const InputDecoration(
                                         filled: true,
                                         fillColor: Colors.white,
                                         labelText: "Descripción",
@@ -211,7 +221,7 @@ class _AddCourseWidgetState extends State<AddCourseWidget> {
                                         minWidth: 40,
                                         height: 50,
                                         child: const Text(
-                                          'Crear curso',
+                                          'Publicar curso',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               color: Color.fromRGBO(
@@ -222,7 +232,7 @@ class _AddCourseWidgetState extends State<AddCourseWidget> {
                                               fontWeight: FontWeight.normal,
                                               height: 1.125),
                                         ),
-                                        onPressed: () {},
+                                        onPressed:() => publicarCurso(),
                                       ),
                                     ],
                                   ),
@@ -241,50 +251,32 @@ class _AddCourseWidgetState extends State<AddCourseWidget> {
     );
   }
 
-  Widget textfiel(String messag) {
-    return Container(
-      padding: const EdgeInsets.all(10.0),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(children: [
-              Container(
-                  padding: const EdgeInsets.all(10.0),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      topRight: Radius.circular(12),
-                      bottomLeft: Radius.circular(12),
-                      bottomRight: Radius.circular(12),
-                    ),
-                    color: const Color.fromRGBO(255, 255, 255, 1),
-                    border: Border.all(
-                      color: const Color.fromRGBO(73, 69, 79, 1),
-                      width: 1,
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(0.0),
-                    child: TextField(
-                      style: const TextStyle(
-                          color: Color.fromRGBO(73, 69, 79, 1),
-                          fontFamily: 'Inter',
-                          fontSize: 18,
-                          letterSpacing: 0,
-                          fontWeight: FontWeight.bold,
-                          height: 1.5),
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        labelText: messag,
-                      ),
-                    ),
-                  )),
-            ]),
-          )
-        ],
-      ),
-    );
+  void publicarCurso() {
+    String titulo = tituloController.text;
+    String desc = descController.text;
+    String room = "principiantes";
+    String teacherId = authenticationController.getCurrentUserId();
+
+    if(dropdownValue == 'Sala Intermedios'){
+      room = 'intermedios';
+    }else if(dropdownValue == 'Sala Expertos'){
+      room = 'expertos';
+    }
+
+    if(titulo.isNotEmpty && desc.isNotEmpty){
+
+      Map<String, String> curso = {'name': titulo, 'desc': desc, 'room': room, 'teacher_id': teacherId};
+
+      firebaseController.addCourse(curso).then((value) {
+        Navigator.pop(context);
+      }).catchError((e) {
+        print("Error: "+e.toString());
+      });
+      
+    }else{
+      print("Is Empty");
+    }
+
   }
+
 }

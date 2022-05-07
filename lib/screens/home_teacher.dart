@@ -388,13 +388,14 @@ class HomeTeacherWidget extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
-                    children: const [
+                    children: [
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          '3 h 30 min',
+                          //'3 h 30 min',
+                          item.time,
                           textAlign: TextAlign.left,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Color.fromRGBO(80, 87, 254, 1),
                               fontFamily: 'Inter',
                               fontSize: 15,
@@ -406,9 +407,10 @@ class HomeTeacherWidget extends StatelessWidget {
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          'Ajedrez para principiantes',
+                          //'Ajedrez para principiantes',
+                          item.name,
                           textAlign: TextAlign.left,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
                               fontFamily: 'Inter',
                               fontSize: 22,
@@ -420,9 +422,10 @@ class HomeTeacherWidget extends StatelessWidget {
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          'Paso a paso para principiantes',
+                          //'Paso a paso para principiantes',
+                          item.desc,
                           textAlign: TextAlign.left,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Color.fromRGBO(73, 69, 79, 1),
                               fontFamily: 'Inter',
                               fontSize: 15,

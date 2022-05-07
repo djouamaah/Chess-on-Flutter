@@ -106,6 +106,16 @@ class AuthenticationController extends GetxController {
     
   }
 
+  String getCurrentUserId(){
+    String? uid = FirebaseAuth.instance.currentUser?.uid;
+    if(uid != null){
+      return uid;
+    }else{
+      return "";
+    }
+    
+  }
+
   Future<void> crearUsuarioDB(String name, String email, String role) async {
       try {
         String uid = FirebaseAuth.instance.currentUser!.uid;
