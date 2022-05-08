@@ -28,16 +28,17 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  AuthenticationController authenticationController = Get.put(AuthenticationController());
+  
   @override
   Widget build(BuildContext context) {
-    AuthenticationController authenticationController = Get.put(AuthenticationController());
+    
     Get.put(Controller());
     Get.put(LocationController());
     Get.put(FirebaseController());
@@ -51,15 +52,24 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: SafeArea(
-          child: Scaffold(body: Obx((){
+          child: Scaffold(body: getBody()
+        ))
+        );
+  }
+
+  Widget getBody(){
+    if(FirebaseAuth.instance.currentUser == null){
+      return LoginWidget();
+    }
+    return Obx((){
             if(authenticationController.userInfoState.value == 0){
               authenticationController.getUserInfo();
               return const Loading();
             } 
             return ContentPage();
-            })),
-        ));
+            });
   }
+
 }
 
 class Wrong extends StatelessWidget {
