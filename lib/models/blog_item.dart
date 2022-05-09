@@ -1,8 +1,8 @@
 class BlogItem {
-  int id;
-  String name;
-  String auth;
+  String? id;
+  String titulo;
   String date;
-
-  BlogItem(this.id, this.name, this.auth, this.date);
+  String desc;
+  String auth;
+  BlogItem(this.id, this.titulo, this.desc, this.date, this.auth);
 }

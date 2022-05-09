@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:proyecto_ui/models/blog_item.dart';
-import '../models/curso.dart';
+import 'package:proyecto_ui/screens/add_blog.dart';
+import 'package:proyecto_ui/controllers/firebase_controller.dart';
+
+
 
 class BlogWidget extends StatelessWidget {
-  List<BlogItem> entries = <BlogItem>[
-    BlogItem(0, 'Trampas en el ajedrez por internet', 'John Doe',
+
+   FirebaseController firebaseController = Get.find();
+
+  /*List<BlogItem> entries = <BlogItem>[
+    BlogItem("", 'Trampas en el ajedrez por internet', 'John Doe',
         'Mar. 18, 2022'),
     BlogItem(1, '¿Como hallar la maniobra ganadora en el medio...', 'Will Smith',
         'Mar. 15, 2022'),
         BlogItem(2, 'Lectura de ajedrez para principiantes', 'John Doe',
         'Mar. 14, 2022'),
-  ];
+  ];*/
 
   @override
   Widget build(BuildContext context) {
+    firebaseController.getblogsListByTeacherId("0");
+   
     return Container(
       decoration: const BoxDecoration(
         color: Color.fromRGBO(236, 241, 247, 1),
@@ -56,14 +65,27 @@ class BlogWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
+
+              InkWell(  
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AddBlogWidget()),
+                    );
+                  },
+                child: Container(
                 width: 48,
                 height: 48,
                 child: IconButton(
                   icon: const Icon(Icons.post_add),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                  onPressed: () {},
+                  onPressed: () {
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AddBlogWidget()),
+                    );
+                  },
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -73,7 +95,8 @@ class BlogWidget extends StatelessWidget {
                   borderRadius:
                       const BorderRadius.all(Radius.elliptical(48, 48)),
                 ),
-              ),
+              ),),
+
             ],
           ),
         ),
@@ -101,7 +124,7 @@ class BlogWidget extends StatelessWidget {
                   const SizedBox(width: 20),
                   const Expanded(
                     child: Text(
-                      'Buscar dentro de tus cursos',
+                      'Buscar dentro de tus blogs',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           color: Color.fromRGBO(73, 69, 79, 1),
@@ -134,7 +157,7 @@ class BlogWidget extends StatelessWidget {
           child: Row(
             children: [
               const Text(
-                'Cursos:',
+                'Blogs:',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     color: Color.fromRGBO(73, 69, 79, 1),
@@ -228,14 +251,27 @@ class BlogWidget extends StatelessWidget {
             ],
           ),
         ),
-        Expanded(
+       Expanded(
+          child:  Obx(() =>
+            ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(8),             
+              itemCount: firebaseController.blogsList.length,
+              itemBuilder: (context, index) {
+                return _row(firebaseController.blogsList[index], index);
+              }),
+          ),
+        ),
+             /*    Expanded(
           child: ListView.builder(
               padding: const EdgeInsets.all(8),
               itemCount: entries.length,
               itemBuilder: (context, index) {
                 return _row(entries[index], index);
               }),
-        )
+        )*/
+
       ]),
     );
   }
@@ -291,7 +327,7 @@ class BlogWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          item.name,
+                          item.date,
                           textAlign: TextAlign.left,
                           style: const TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
@@ -302,7 +338,7 @@ class BlogWidget extends StatelessWidget {
                               height: 1.3),
                         ),
                         Text(
-                          item.auth,
+                          item.titulo,
                           textAlign: TextAlign.left,
                           style: const TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
@@ -313,7 +349,18 @@ class BlogWidget extends StatelessWidget {
                               height: 1.3),
                         ),
                         Text(
-                          item.date,
+                          item.auth,
+                          textAlign: TextAlign.left,
+                          style: const TextStyle(
+                              color: Color.fromRGBO(73, 69, 79, 1),
+                              fontFamily: 'Inter',
+                              fontSize: 12,
+                              letterSpacing: -0.5,
+                              fontWeight: FontWeight.normal,
+                              height: 1.3),
+                        ),
+                        Text(
+                          item.desc,
                           textAlign: TextAlign.left,
                           style: const TextStyle(
                               color: Color.fromRGBO(73, 69, 79, 1),
